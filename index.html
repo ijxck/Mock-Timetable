@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>Mock Exams · January 2027</title>
+<style>
+  :root { --bg:#0a1020;--panel:#121b31;--panel2:#18233b;--panel3:#202c47;--line:#30405d;--text:#f3f6ff;--muted:#a1aec9;--mint:#6be6b0;--blue:#8bbcff;--shadow:0 16px 55px rgba(0,0,0,.17); }
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { margin:0;min-height:100vh;background:radial-gradient(70% 60% at 8% 0%,rgba(50,91,152,.25),transparent 65%),radial-gradient(60% 40% at 96% 2%,rgba(31,112,96,.18),transparent 75%),var(--bg);font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--text);font-size:15px;line-height:1.5; }
+  button,input,select {font:inherit;}
+  button {cursor:pointer;}
+  button:focus-visible,input:focus-visible {outline:3px solid var(--blue);outline-offset:3px;}
+  .wrap {max-width:1220px;margin:0 auto;padding:38px 24px 76px;}
+  .kicker {color:var(--mint);letter-spacing:.17em;font-size:11px;text-transform:uppercase;font-weight:800;}
+  .header {display:flex;align-items:flex-start;justify-content:space-between;gap:18px;margin-bottom:28px;}
+  h1 {font-size:clamp(34px,5vw,54px);letter-spacing:-.055em;line-height:1.09;margin:8px 0 12px;font-weight:850;}
+  .sub {color:var(--muted);margin:0;font-size:14px;max-width:660px;}
+  .header-right {display:flex;gap:9px;flex-wrap:wrap;justify-content:flex-end;}
+  .toolbtn {display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:11px;background:var(--panel);padding:10px 12px;color:var(--text);font-size:12px;font-weight:700;white-space:nowrap;}
+  .toolbtn:hover {background:var(--panel3);border-color:#536c91;}
+  .toolbtn svg {width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+  .stats {display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:20px;}
+  .stat {background:rgba(18,27,49,.9);border:1px solid var(--line);border-radius:16px;padding:17px 20px;min-height:104px;}
+  .stat span {font-size:12px;color:var(--muted);font-weight:650;}
+  .stat strong {display:block;font-size:30px;line-height:1.25;margin-top:7px;font-variant-numeric:tabular-nums;letter-spacing:-.035em;}
+  .stat strong.green {color:var(--mint);}
+  .progress-wrap {display:flex;align-items:center;gap:12px;margin:6px 0 26px;}
+  .progress {height:8px;border-radius:20px;background:#23314c;overflow:hidden;flex:1;}
+  .progress > div {height:100%;width:0;background:linear-gradient(90deg,#3dc69a,#9af9c6);border-radius:inherit;transition:width .25s;}
+  .prog-label {font-size:12px;color:var(--muted);white-space:nowrap;}
+  .toolbar {display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:20px;flex-wrap:wrap;}
+  .segments {display:flex;flex-wrap:wrap;gap:5px;padding:5px;border:1px solid var(--line);border-radius:12px;background:#11192c;}
+  .seg {padding:8px 14px;border-radius:8px;border:0;background:transparent;color:var(--muted);font-size:12px;font-weight:750;}
+  .seg[aria-pressed="true"] {background:#2a3e61;color:#fff;box-shadow:0 1px 4px rgba(0,0,0,.25);}
+  .filter {display:inline-flex;align-items:center;gap:9px;font-size:13px;font-weight:650;color:var(--text);cursor:pointer;user-select:none;}
+  .filter input {accent-color:#57d8ad;width:17px;height:17px;cursor:pointer;}
+  .legend {display:flex;flex-wrap:wrap;gap:14px;margin:0 0 21px;color:var(--muted);font-size:11px;}
+  .legend-item {display:flex;align-items:center;gap:6px;}
+  .dot {width:9px;height:9px;border-radius:3px;background:var(--c);display:inline-block;flex-shrink:0;}
+  .section-heading {display:flex;align-items:center;gap:13px;margin:27px 0 11px;color:#c4d0e6;font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:850;}
+  .section-heading:after {content:"";height:1px;background:var(--line);flex:1;}
+  .calendar {display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:9px;}
+  .day {display:block;min-width:0;text-align:left;padding:12px 10px;background:var(--panel);border:1px solid var(--line);border-radius:15px;color:var(--text);transition:border-color .15s,background .15s,transform .15s;min-height:160px;}
+  .day:hover {border-color:#6786b5;background:#192642;transform:translateY(-1px);}
+  .day.selected {border:2px solid var(--blue);background:#1b2d4b;padding:11px 9px;box-shadow:0 0 0 3px rgba(139,188,255,.07);}
+  .day.free {background:rgba(25,57,52,.46);border-style:dashed;border-color:#315f56;}
+  .day.free.selected {border-style:solid;border-color:var(--blue);}
+  .day-top {display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid rgba(123,143,179,.22);padding-bottom:9px;margin-bottom:10px;gap:5px;}
+  .weekday {font-size:10px;color:var(--muted);font-weight:850;letter-spacing:.03em;}
+  .day-num {font-size:26px;font-weight:850;line-height:1.1;letter-spacing:-.06em;font-variant-numeric:tabular-nums;}
+  .day-count {font-size:10px;color:var(--muted);margin-bottom:9px;}
+  .day-event {border-left:3px solid var(--c);padding:1px 0 2px 7px;margin:9px 0 12px;overflow-wrap:anywhere;}
+  .day-event.done {opacity:.58;}
+  .day-event.done .day-subject {text-decoration:line-through;}
+  .day-subject {font-size:11px;font-weight:800;line-height:1.25;}
+  .day-paper {font-size:10px;color:var(--muted);margin-top:3px;}
+  .day-time {font-size:10px;color:#e0e8fa;margin-top:6px;font-weight:700;line-height:1.3;font-variant-numeric:tabular-nums;}
+  .free-label {color:var(--mint);font-size:13px;font-weight:850;display:flex;gap:6px;align-items:center;margin-top:24px;}
+  .free-small {color:var(--muted);font-size:11px;margin-top:7px;}
+  .detail {margin-top:30px;background:linear-gradient(155deg,#162440,#111a2e);border:1px solid #41506d;border-radius:20px;padding:22px;box-shadow:var(--shadow);scroll-margin-top:18px;}
+  .detail-heading {display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:16px;}
+  .detail-heading small {text-transform:uppercase;letter-spacing:.1em;font-size:10px;font-weight:850;color:var(--mint);}
+  h2 {margin:4px 0 0;font-size:24px;letter-spacing:-.03em;}
+  .count-pill {font-size:12px;border:1px solid #435879;border-radius:99px;padding:5px 11px;color:#bed0e8;white-space:nowrap;}
+  .exam-list {display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:12px;}
+  .exam {background:#1a2a46;border:1px solid #364b6e;border-radius:13px;padding:16px;min-width:0;}
+  .exam.finished {opacity:.7;}
+  .exam-head {display:flex;align-items:flex-start;justify-content:space-between;gap:8px;}
+  .exam-name {font-size:16px;font-weight:850;margin:0;}
+  .exam-paper {font-size:12px;color:var(--muted);margin-top:3px;}
+  .done-check {display:inline-flex;align-items:center;gap:5px;white-space:nowrap;font-size:12px;color:var(--muted);cursor:pointer;}
+  .done-check input {width:17px;height:17px;accent-color:var(--mint);cursor:pointer;}
+  .exam-line {height:3px;border-radius:4px;background:var(--c);margin:16px 0;}
+  .exam-times {display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:8px;}
+  .time-label {display:block;font-size:10px;text-transform:uppercase;letter-spacing:.07em;font-weight:800;color:var(--muted);}
+  .big-time {font-weight:850;font-size:17px;margin-top:3px;font-variant-numeric:tabular-nums;white-space:nowrap;}
+  .arrow {color:var(--muted);font-size:20px;margin:8px 0 0;}
+  .duration {margin-top:11px;font-size:11px;color:var(--muted);}
+  .free-details {text-align:center;padding:24px 12px 28px;}
+  .free-details .icon {font-size:38px;line-height:1.2;color:var(--mint);}
+  .free-details h3 {margin:8px 0 6px;font-size:21px;}
+  .free-details p {margin:0;color:var(--muted);font-size:13px;}
+  .footer {padding-top:22px;color:var(--muted);font-size:12px;line-height:1.7;}
+  .footer b {color:#dce6f5;}
+  .empty {padding:30px;color:var(--muted);text-align:center;}
+  @media(max-width:1080px){.calendar{grid-template-columns:repeat(4,minmax(0,1fr));}}
+  @media(max-width:650px){.wrap{padding:25px 15px 45px}.header{flex-direction:column}.header-right{justify-content:flex-start}.stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.stat{padding:14px;min-height:91px}.stat strong{font-size:25px}.calendar{grid-template-columns:repeat(2,minmax(0,1fr))}.day{min-height:158px;padding:12px}.day.selected{padding:11px}.day-subject{font-size:12px}.day-time{font-size:11px}.detail{padding:16px}.exam-list{grid-template-columns:1fr}.big-time{font-size:16px}.legend{gap:9px}.seg{padding:8px 11px}}
+  @media print {body{background:#fff!important;color:#111}.wrap{max-width:none;padding:0}.header-right,.toolbar,.progress-wrap,.detail,.footer .no-print{display:none!important}.stat,.day{break-inside:avoid;background:#fff!important;border-color:#ccc!important;color:#111!important}.calendar{grid-template-columns:repeat(7,minmax(0,1fr))}.day{min-height:135px}.weekday,.day-count,.day-paper,.free-small,.day-time,.sub,.stat span,.legend{color:#555!important}.free-label{color:#22765e!important}.section-heading{color:#333}.day-subject{font-size:10px}.day-time{font-size:9px}.stats{grid-template-columns:repeat(4,1fr)}h1{font-size:35px}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header class="header">
+    <div><div class="kicker">Exam planner · January 2027</div><h1>Mock exam timetable<span style="color:var(--mint)">.</span></h1><p class="sub">Tap a date for exam details, mark papers as finished, and keep track of your free days. Your progress saves automatically in this browser.</p></div>
+    <div class="header-right"><button class="toolbtn" id="printBtn" type="button" aria-label="Print timetable"><svg viewBox="0 0 24 24"><path d="M6 9V3h12v6M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2M6 14h12v7H6z"/></svg>Print</button><button class="toolbtn" id="calendarBtn" type="button" aria-label="Download calendar events"><svg viewBox="0 0 24 24"><path d="M8 2v4m8-4v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zM8 15h8m-8 3h5"/></svg>Export calendar</button></div>
+  </header>
+  <div class="stats" aria-label="Exam summary">
+    <div class="stat"><span>Total papers</span><strong id="paperCount">15</strong></div>
+    <div class="stat"><span>Exam days</span><strong id="examDayCount">10</strong></div>
+    <div class="stat"><span>Free days</span><strong id="freeDayCount" class="green">4</strong></div>
+    <div class="stat"><span>Completed</span><strong id="completedCount" class="green">0 / 15</strong></div>
+  </div>
+  <div class="progress-wrap"><div class="progress" role="progressbar" aria-label="Exam completion" aria-valuemin="0" aria-valuemax="15" aria-valuenow="0" id="progress"><div id="progressFill"></div></div><span class="prog-label" id="progressText">0% complete</span></div>
+  <div class="toolbar"><nav class="segments" role="group" aria-label="Filter calendar by week"><button type="button" class="seg" data-week="all" aria-pressed="true">All weeks</button><button type="button" class="seg" data-week="w1" aria-pressed="false">Week 1</button><button type="button" class="seg" data-week="w2" aria-pressed="false">Week 2</button><button type="button" class="seg" data-week="w3" aria-pressed="false">Week 3</button></nav><label class="filter"><input type="checkbox" id="freeOnly">Show free days only</label></div>
+  <div class="legend" aria-label="Subject colour legend"><span class="legend-item"><i class="dot" style="--c:#8d9aff"></i>Computer Science</span><span class="legend-item"><i class="dot" style="--c:#c5a0fa"></i>Maths</span><span class="legend-item"><i class="dot" style="--c:#63dba0"></i>Biology</span><span class="legend-item"><i class="dot" style="--c:#66c6e6"></i>Physics</span><span class="legend-item"><i class="dot" style="--c:#e8a36f"></i>History</span><span class="legend-item"><i class="dot" style="--c:#e7cb73"></i>Economics</span><span class="legend-item"><i class="dot" style="--c:#f2a1c8"></i>Malay</span></div>
+  <div id="calendarContainer" aria-label="Calendar dates"></div>
+  <section id="details" class="detail" aria-live="polite" aria-label="Selected date exam details"></section>
+  <footer class="footer"><b>Timing note:</b> Finishing times are recalculated from the stated start times and starred durations, which sometimes differ from the originally supplied end times. Confirm timings with your school before exam day.<br><span class="no-print">The ticked-off exams and filters are stored locally in your browser (not synced across devices). This file works offline. Calendar export uses Malaysia time (UTC+08:00). </span><button class="toolbtn no-print" id="resetBtn" style="margin-top:14px" type="button">Reset completed exams</button></footer>
+</main>
+<script>
+'use strict';
+const DAYS=[
+ {id:'08',week:'w1',day:'Friday',events:[{id:'cs1',subject:'Computer Science',paper:'0478/1',start:'10:30 AM',end:'12:15 PM',duration:'1h 45m'}]},
+ {id:'09',week:'w1',day:'Saturday',events:[]},
+ {id:'10',week:'w1',day:'Sunday',events:[]},
+ {id:'11',week:'w2',day:'Monday',events:[{id:'math',subject:'Mathematics Unit 2F',paper:'4WM2F/01',start:'10:30 AM',end:'12:30 PM',duration:'2h'}]},
+ {id:'12',week:'w2',day:'Tuesday',events:[{id:'bio4',subject:'Biology',paper:'0610/4',start:'8:00 AM',end:'9:15 AM',duration:'1h 15m'},{id:'bio6',subject:'Biology',paper:'0610/6',start:'2:20 PM',end:'3:20 PM',duration:'1h'}]},
+ {id:'13',week:'w2',day:'Wednesday',events:[{id:'phy4',subject:'Physics',paper:'0625/4',start:'8:00 AM',end:'9:15 AM',duration:'1h 15m'},{id:'cs2',subject:'Computer Science',paper:'0478/2',start:'10:30 AM',end:'12:15 PM',duration:'1h 45m'},{id:'phy6',subject:'Physics',paper:'0625/6',start:'2:20 PM',end:'3:20 PM',duration:'1h'}]},
+ {id:'14',week:'w2',day:'Thursday',events:[{id:'hist1',subject:'History',paper:'0470/1',start:'10:30 AM',end:'12:30 PM',duration:'2h'}]},
+ {id:'15',week:'w2',day:'Friday',events:[{id:'hist4',subject:'History',paper:'0470/4',start:'8:00 AM',end:'9:00 AM',duration:'1h'}]},
+ {id:'16',week:'w2',day:'Saturday',events:[]},
+ {id:'17',week:'w2',day:'Sunday',events:[]},
+ {id:'18',week:'w3',day:'Monday',events:[{id:'econ2',subject:'Economics',paper:'0455/2',start:'10:30 AM',end:'12:30 PM',duration:'2h'},{id:'phy2',subject:'Physics',paper:'0625/2',start:'2:20 PM',end:'3:05 PM',duration:'45m'}]},
+ {id:'19',week:'w3',day:'Tuesday',events:[{id:'malay',subject:'Malay',paper:'0546/1',start:'2:20 PM',end:'3:10 PM',duration:'50m'}]},
+ {id:'20',week:'w3',day:'Wednesday',events:[{id:'bio2',subject:'Biology',paper:'0610/2',start:'8:00 AM',end:'8:45 AM',duration:'45m'},{id:'hist2',subject:'History',paper:'0470/2',start:'10:30 AM',end:'12:15 PM',duration:'1h 45m'}]},
+ {id:'21',week:'w3',day:'Thursday',events:[{id:'econ1',subject:'Economics',paper:'0455/1',start:'8:00 AM',end:'9:00 AM',duration:'1h'}]}
+];
+const WEEKS=[{id:'w1',name:'Week 1 · 8–10 January'},{id:'w2',name:'Week 2 · 11–17 January'},{id:'w3',name:'Week 3 · 18–21 January'}];
+const COLORS={'Computer Science':'#8d9aff','Mathematics Unit 2F':'#c5a0fa','Biology':'#63dba0','Physics':'#66c6e6','History':'#e8a36f','Economics':'#e7cb73','Malay':'#f2a1c8'};
+const KEY='mock-exam-tracker-2027-v1';
+const ALL_EXAMS=DAYS.flatMap(d=>d.events);
+let saved={};try{saved=JSON.parse(localStorage.getItem(KEY)||'{}')||{};}catch(_){saved={};}
+let state={week:WEEKS.some(w=>w.id===saved.week)?saved.week:'all',freeOnly:!!saved.freeOnly,selected:DAYS.some(d=>d.id===saved.selected)?saved.selected:'13',done:typeof saved.done==='object'&&saved.done? saved.done:{}};
+function store(){try{localStorage.setItem(KEY,JSON.stringify(state));}catch(_){/* may be blocked in some private/file browsers */}}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function currentDays(){return DAYS.filter(d=>(state.week==='all'||d.week===state.week)&&(!state.freeOnly||!d.events.length));}
+function ensureSelected(){if(!currentDays().some(d=>d.id===state.selected)){state.selected=currentDays()[0]?.id||'13';}}
+function render(){ensureSelected();const visible=currentDays();
+ document.querySelectorAll('[data-week]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.week===state.week)));
+ document.getElementById('freeOnly').checked=state.freeOnly;
+ const completed=ALL_EXAMS.filter(e=>!!state.done[e.id]).length;
+ document.getElementById('paperCount').textContent=ALL_EXAMS.length;
+ document.getElementById('examDayCount').textContent=DAYS.filter(d=>d.events.length).length;
+ document.getElementById('freeDayCount').textContent=DAYS.filter(d=>!d.events.length).length;
+ document.getElementById('completedCount').textContent=completed+' / '+ALL_EXAMS.length;
+ document.getElementById('progressFill').style.width=(completed/ALL_EXAMS.length*100)+'%';
+ document.getElementById('progressText').textContent=Math.round(completed/ALL_EXAMS.length*100)+'% complete';
+ document.getElementById('progress').setAttribute('aria-valuenow',String(completed));
+ document.getElementById('calendarContainer').innerHTML=WEEKS.map(w=>{const weekDays=visible.filter(d=>d.week===w.id);if(!weekDays.length)return '';
+ return '<section><h2 class="section-heading">'+esc(w.name)+'</h2><div class="calendar">'+weekDays.map(d=>`<button type="button" class="day ${d.events.length?'':'free'} ${state.selected===d.id?'selected':''}" data-day="${d.id}" aria-pressed="${state.selected===d.id}" aria-label="${esc(d.day)} ${d.id} January, ${d.events.length?d.events.length+' exam'+(d.events.length===1?'':'s'):'free day'}"><div class="day-top"><span class="weekday">${esc(d.day)}</span><span class="day-num">${d.id}</span></div>${d.events.length?`<div class="day-count">${d.events.length} ${d.events.length===1?'paper':'papers'}</div>${d.events.map(e=>`<div class="day-event ${state.done[e.id]?'done':''}" style="--c:${COLORS[e.subject]}"><div class="day-subject">${esc(e.subject)}</div><div class="day-paper">${esc(e.paper)}</div><div class="day-time">${esc(e.start)}</div></div>`).join('')}`:'<div class="free-label"><span aria-hidden="true">✓</span> FREE DAY</div><div class="free-small">No exams</div>'}</button>`).join('')+'</div></section>';}).join('')||'<div class="empty">No dates match the selected filters.</div>';
+ const day=visible.find(d=>d.id===state.selected);
+ if(!day){document.getElementById('details').innerHTML='';return;}
+ document.getElementById('details').innerHTML=`<div class="detail-heading"><div><small>Selected day</small><h2>${esc(day.day)}, ${Number(day.id)} January</h2></div><span class="count-pill">${day.events.length} ${day.events.length===1?'exam':'exams'}</span></div>`+(day.events.length?`<div class="exam-list">${day.events.map(e=>`<article class="exam ${state.done[e.id]?'finished':''}" style="--c:${COLORS[e.subject]}"><div class="exam-head"><div><h3 class="exam-name">${esc(e.subject)}</h3><div class="exam-paper">Paper ${esc(e.paper)}</div></div><label class="done-check"><input type="checkbox" data-exam="${e.id}" ${state.done[e.id]?'checked':''} aria-label="Mark ${esc(e.subject)} paper ${esc(e.paper)} completed"> Done</label></div><div class="exam-line"></div><div class="exam-times"><div><span class="time-label">Starts</span><div class="big-time">${esc(e.start)}</div></div><div class="arrow" aria-hidden="true">→</div><div><span class="time-label">Ends</span><div class="big-time">${esc(e.end)}</div></div></div><div class="duration">Duration: ${esc(e.duration)}</div></article>`).join('')}</div>`:'<div class="free-details"><div class="icon" aria-hidden="true">✓</div><h3>Completely free day!</h3><p>No exams scheduled. Rest up or use the time to revise.</p></div>');
+ store();
+}
+document.addEventListener('click',event=>{const week=event.target.closest('[data-week]');if(week){state.week=week.dataset.week;render();return;}const day=event.target.closest('[data-day]');if(day){state.selected=day.dataset.day;render();document.getElementById('details').scrollIntoView({behavior:'smooth',block:'nearest'});}});
+document.getElementById('freeOnly').addEventListener('change',e=>{state.freeOnly=e.target.checked;render();});
+document.getElementById('details').addEventListener('change',e=>{if(e.target.matches('[data-exam]')){state.done[e.target.dataset.exam]=e.target.checked;render();}});
+document.getElementById('resetBtn').addEventListener('click',()=>{if(confirm('Reset all completed exam checkmarks?')){state.done={};render();}});
+document.getElementById('printBtn').addEventListener('click',()=>window.print());
+function timeICS(human){const m=human.match(/^(\d{1,2}):(\d{2}) (AM|PM)$/);let hour=Number(m[1])%12+(m[3]==='PM'?12:0);return String(hour).padStart(2,'0')+m[2]+'00';}
+function icsEscape(s){return s.replace(/\\/g,'\\\\').replace(/,/g,'\\,').replace(/;/g,'\\;').replace(/\n/g,'\\n');}
+function exportCalendar(){const stamp=new Date().toISOString().replace(/[-:]/g,'').replace(/\.\d{3}/,'');const lines=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Offline Mock Exam Planner//EN','CALSCALE:GREGORIAN','METHOD:PUBLISH','X-WR-CALNAME:Mock Exams January 2027'];for(const day of DAYS){for(const e of day.events){lines.push('BEGIN:VEVENT','UID:'+e.id+'-202701'+day.id+'@mock-exam-planner','DTSTAMP:'+stamp,'DTSTART;TZID=Asia/Kuala_Lumpur:202701'+day.id+'T'+timeICS(e.start),'DTEND;TZID=Asia/Kuala_Lumpur:202701'+day.id+'T'+timeICS(e.end),'SUMMARY:'+icsEscape(e.subject+' ('+e.paper+')'),'DESCRIPTION:'+icsEscape('Mock examination. Duration: '+e.duration+'. Confirm with your school.'),'END:VEVENT');}}lines.push('END:VCALENDAR');const content=lines.join('\r\n')+'\r\n';const blob=new Blob([content],{type:'text/calendar;charset=utf-8'});const url=URL.createObjectURL(blob);const link=document.createElement('a');link.href=url;link.download='mock-exams-january-2027.ics';document.body.appendChild(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);}
+document.getElementById('calendarBtn').addEventListener('click',exportCalendar);
+render();
+</script>
+</body>
+</html>
