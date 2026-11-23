@@ -145,8 +145,67 @@
   .day-note::placeholder{color:#8295b3}
   .revision-to-calendar{margin-top:15px}
   @media(max-width:1080px){.subject-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.guide-body{grid-template-columns:minmax(0,1.5fr) minmax(210px,.8fr)}}
-  @media(max-width:650px){.study-method{grid-template-columns:1fr}.guide-head{flex-direction:column}.guide-summary{text-align:left;width:100%}.subject-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.guide-body{grid-template-columns:1fr}.guide-main,.guide-side{padding:15px}.app-tab{flex:1;text-align:center}.subject-pick{min-height:64px}.guide-head h2{font-size:24px}}
+  @media(max-width:650px){.study-method{grid-template-columns:1fr}.guide-head{flex-direction:column}.guide-summary{text-align:left;width:100%}.subject-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.guide-body{grid-template-columns:1fr}.guide-main,.guide-side{padding:15px}.app-tabs{flex-wrap:nowrap;gap:3px}.app-tab{flex:1;min-width:0;text-align:center;white-space:nowrap;font-size:12px;padding:10px 6px}.subject-pick{min-height:64px}.guide-head h2{font-size:24px}}
   @media print {.app-tabs,.guide-head,.study-method,#revisionView{display:none!important}#calendarView{display:block!important}.notes-wrap,.free-next{display:none!important}}
+
+  /* Study timetable: three full weeks, editable local-first study blocks */
+  .study-head{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;margin:6px 0 18px}
+  .study-head h2{font-size:28px;margin:3px 0 8px}
+  .study-head p{font-size:13px;color:var(--muted);margin:0;max-width:730px}
+  .study-actions{display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-end;gap:8px}
+  .study-metrics{display:flex;gap:11px;margin:0 0 18px;flex-wrap:wrap}
+  .study-metric{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:11px 15px;min-width:150px;flex:1}
+  .study-metric strong{font-size:22px;display:block;line-height:1.3;font-variant-numeric:tabular-nums}
+  .study-metric span{font-size:11px;color:var(--muted)}
+  .study-toolbar{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:0 0 10px}
+  .study-help{font-size:12px;color:var(--muted)}
+  .study-week{margin:23px 0 13px}
+  .study-week-label{font-size:12px;letter-spacing:.12em;color:#cbd7ec;font-weight:850;text-transform:uppercase;margin:0 0 11px}
+  .study-week-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:9px}
+  .study-day{min-width:0;display:flex;flex-direction:column;gap:7px;border:1px solid var(--line);border-radius:15px;background:#121e34;padding:12px 10px}
+  .study-day.selected{border-color:var(--blue);box-shadow:0 0 0 2px rgba(139,188,255,.09)}
+  .study-day-header{display:flex;justify-content:space-between;align-items:baseline;gap:5px;border-bottom:1px solid rgba(134,159,193,.25);padding-bottom:7px}
+  .study-day-header span{font-size:10px;font-weight:800;color:var(--muted)}
+  .study-day-header strong{font-size:25px;font-weight:850;line-height:1.15;letter-spacing:-.05em}
+  .study-day-hint{font-size:10px;color:var(--mint);font-weight:800;margin:0}
+  .study-day-hint.has-exam{color:#f7c7ad}
+  .study-item{display:flex;flex-direction:column;gap:4px;border:1px solid #36455f;border-left:3px solid var(--c,var(--mint));background:#1a2942;border-radius:8px;padding:8px;min-width:0}
+  .study-item.exam-block{background:#322639;border-color:#574054;border-left-color:#f19c83}
+  .study-item-complete{opacity:.55}
+  .study-item-top{display:flex;align-items:center;justify-content:space-between;gap:5px}
+  .study-type{font-size:9px;font-weight:850;letter-spacing:.07em;color:var(--mint)}
+  .study-type.exam-type{color:#ffc3b0}
+  .study-item-title{overflow-wrap:anywhere;font-size:11px;font-weight:780;line-height:1.35;margin:0}
+  .study-item-time{font-size:10px;color:#b9c9e1;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.5}
+  .study-check{display:inline-flex;align-items:center;justify-content:center;gap:3px;font-size:10px;color:var(--muted);cursor:pointer;white-space:nowrap}
+  .study-check input{width:15px;height:15px;accent-color:var(--mint);cursor:pointer;margin:0}
+  .study-editbtn{padding:4px 0;border:0;background:none;color:#a8cbfa;font-size:10px;align-self:flex-start;text-align:left;font-weight:760}
+  .study-editbtn:hover{text-decoration:underline}
+  .study-add{margin-top:auto;background:#182b43;color:#cce5fa;border:1px dashed #4d7891;border-radius:8px;padding:8px 5px;font-size:11px;font-weight:760;min-height:34px}
+  .study-add:hover{background:#223c58}
+  .study-none{font-size:10px;color:#91a3be;line-height:1.45;padding:10px 0}
+  .study-form-card{margin:21px 0 5px;padding:19px;border:1px solid #516a8f;background:linear-gradient(155deg,#192b48,#142139);border-radius:17px;scroll-margin-top:15px}
+  .study-form-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:16px}
+  .study-form-head h3{font-size:19px;margin:2px 0 5px}
+  .study-form-head p{font-size:12px;color:var(--muted);margin:0}
+  .study-form{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+  .study-field{display:flex;flex-direction:column;gap:5px;min-width:0}
+  .study-field.wide{grid-column:span 2}
+  .study-field label{font-size:11px;font-weight:800;color:#c2d2ea}
+  .study-field select,.study-field input{width:100%;min-width:0;border:1px solid #50688c;background:#0e1b30;color:var(--text);border-radius:9px;padding:10px;min-height:42px;font-size:13px}
+  .study-form-actions{grid-column:1/-1;display:flex;align-items:center;flex-wrap:wrap;gap:9px}
+  .study-save{border:none;border-radius:10px;padding:11px 17px;background:var(--mint);color:#0c2c27;font-size:12px;font-weight:850}
+  .study-save:hover{background:#a1f9d2}
+  .study-cancel,.study-remove{background:#263a56;color:var(--text);border:1px solid #506786;border-radius:10px;padding:10px 15px;font-size:12px;font-weight:780}
+  .study-remove{color:#ffb5b5;border-color:#85505b;background:#362635;margin-left:auto}
+  .study-error{grid-column:1/-1;color:#ffd0c9;background:#4b2732;border:1px solid #a45164;border-radius:9px;padding:9px 11px;font-size:12px;line-height:1.5}
+  .study-legend{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:9px 0;color:var(--muted);font-size:11px}
+  .study-legend .swatch{width:9px;height:9px;border-radius:2px;display:inline-block}
+  .study-empty-week{padding:10px;color:var(--muted)}
+  @media(max-width:1100px){.study-week-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+  @media(max-width:700px){.study-head{flex-direction:column}.study-actions{justify-content:flex-start}.study-week-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.study-form{grid-template-columns:repeat(2,minmax(0,1fr))}.study-field.wide{grid-column:span 2}}
+  @media(max-width:450px){.study-form{grid-template-columns:1fr}.study-field.wide{grid-column:span 1}.study-metric{min-width:115px}.study-day{padding:10px 8px}}
+  @media print{#studyView{display:none!important}}
 </style>
 </head>
 <body>
@@ -162,12 +221,24 @@
     <div class="stat"><span>Completed</span><strong id="completedCount" class="green">0 / 15</strong></div>
   </div>
   <div class="progress-wrap"><div class="progress" role="progressbar" aria-label="Exam completion" aria-valuemin="0" aria-valuemax="15" aria-valuenow="0" id="progress"><div id="progressFill"></div></div><span class="prog-label" id="progressText">0% complete</span></div>
-  <nav class="app-tabs" role="tablist" aria-label="Planner sections"><button class="app-tab" type="button" id="calendarTab" role="tab" data-view="calendar" aria-controls="calendarView" aria-selected="true">Calendar</button><button class="app-tab" type="button" id="revisionTab" role="tab" data-view="revision" aria-controls="revisionView" aria-selected="false">Revision guide</button></nav>
+  <nav class="app-tabs" role="tablist" aria-label="Planner sections"><button class="app-tab" type="button" id="calendarTab" role="tab" data-view="calendar" aria-controls="calendarView" aria-selected="true">Calendar</button><button class="app-tab" type="button" id="studyTab" role="tab" data-view="study" aria-controls="studyView" aria-selected="false">Study timetable</button><button class="app-tab" type="button" id="revisionTab" role="tab" data-view="revision" aria-controls="revisionView" aria-selected="false">Revision guide</button></nav>
   <section id="calendarView" role="tabpanel" aria-labelledby="calendarTab">
   <div class="toolbar"><nav class="segments" role="group" aria-label="Filter calendar by week"><button type="button" class="seg" data-week="all" aria-pressed="true">All weeks</button><button type="button" class="seg" data-week="w1" aria-pressed="false">Week 1</button><button type="button" class="seg" data-week="w2" aria-pressed="false">Week 2</button><button type="button" class="seg" data-week="w3" aria-pressed="false">Week 3</button></nav><label class="filter"><input type="checkbox" id="freeOnly">Show free days only</label></div>
   <div class="legend" aria-label="Subject colour legend"><span class="legend-item"><i class="dot" style="--c:#8d9aff"></i>Computer Science</span><span class="legend-item"><i class="dot" style="--c:#c5a0fa"></i>Maths</span><span class="legend-item"><i class="dot" style="--c:#63dba0"></i>Biology</span><span class="legend-item"><i class="dot" style="--c:#66c6e6"></i>Physics</span><span class="legend-item"><i class="dot" style="--c:#e8a36f"></i>History</span><span class="legend-item"><i class="dot" style="--c:#e7cb73"></i>Economics</span><span class="legend-item"><i class="dot" style="--c:#f2a1c8"></i>Malay</span></div>
   <div id="calendarContainer" aria-label="Calendar dates"></div>
   <section id="details" class="detail" aria-live="polite" aria-label="Selected date exam details"></section>
+  </section>
+  <section id="studyView" role="tabpanel" aria-labelledby="studyTab" hidden>
+    <div class="study-head">
+      <div><div class="kicker">Make a plan, then make progress</div><h2>Study timetable</h2><p>A suggested revision plan for 4–24 January, fitted around your actual papers. Check off sessions as you go, or edit the schedule to suit you. Exam times are fixed; suggested study blocks are yours to change.</p></div>
+      <div class="study-actions"><button class="toolbtn" type="button" id="studyExportBtn">Export study sessions</button><button class="toolbtn" type="button" id="studyResetBtn">Restore suggested plan</button></div>
+    </div>
+    <div class="study-metrics"><div class="study-metric"><strong id="studyDoneCount">0 / 0</strong><span>Study sessions completed</span></div><div class="study-metric"><strong id="studyHours">0h</strong><span>Total planned study time</span></div><div class="study-metric"><strong id="studyFreeCount">0</strong><span>Days without study sessions</span></div></div>
+    <div class="study-toolbar"><nav class="segments" role="group" aria-label="Filter study plan by week"><button class="seg" type="button" data-study-week="all" aria-pressed="true">All weeks</button><button class="seg" type="button" data-study-week="w1" aria-pressed="false">Week 1</button><button class="seg" type="button" data-study-week="w2" aria-pressed="false">Week 2</button><button class="seg" type="button" data-study-week="w3" aria-pressed="false">Week 3</button></nav><div class="study-help">Click “+ Add” on any day to plan a session.</div></div>
+    <div class="study-legend"><span class="swatch" style="background:#f19c83"></span>Exam (fixed) <span class="swatch" style="background:var(--mint)"></span>Study session (editable) <span>All displayed times are 12-hour Malaysia time.</span></div>
+    <div id="studyContainer" aria-label="Study plan for January 2027"></div>
+    <div id="studyEditor" class="study-form-card" hidden></div>
+    <p class="footer">This is a suggested plan, not a compulsory routine. Short, focused revision with proper breaks is more useful than filling every free hour. Changes save to this browser automatically.</p>
   </section>
   <section id="revisionView" role="tabpanel" aria-labelledby="revisionTab" hidden>
     <div class="guide-head"><div><div class="kicker">Study smarter, not longer</div><h2>Revision guide</h2><p>Choose a subject, work through the checklists, and prepare for the specific papers on your timetable. All checkmarks save automatically. Topics are revision prompts, not a replacement for your school's syllabus.</p></div><div class="guide-summary"><strong id="revisionProgress">0 / 42</strong><span>Revision tasks completed</span></div></div>
@@ -181,7 +252,7 @@
     <div id="guideDetail" class="guide-body" aria-live="polite"></div>
     <p class="footer">These are general revision suggestions. Check your exact school syllabus, option topics, and permitted calculator rules before deciding what to prioritise.</p>
   </section>
-  <footer class="footer"><b>Timing note:</b> Finishing times are recalculated from the stated start times and starred durations, which sometimes differ from the originally supplied end times. Confirm timings with your school before exam day.<br><span class="no-print">The exam checkmarks, revision progress, notes and filters are stored locally in your browser (not synced across devices). This file works offline. Calendar export uses Malaysia time (UTC+08:00). </span><button class="toolbtn no-print" id="resetBtn" style="margin-top:14px" type="button">Reset completed exams</button></footer>
+  <footer class="footer"><b>Timing note:</b> Finishing times are recalculated from the stated start times and starred durations, which sometimes differ from the originally supplied end times. Confirm timings with your school before exam day.<br><span class="no-print">Exam and study progress, revision checkmarks, notes and filters are stored locally in your browser (not synced across devices). This file works offline. Calendar export uses Malaysia time (UTC+08:00). </span><button class="toolbtn no-print" id="resetBtn" style="margin-top:14px" type="button">Reset completed exams</button></footer>
 </main>
 <script>
 'use strict';
@@ -262,11 +333,50 @@ const GUIDES=[
   ['timed','Timed paper practice','Complete a school-matched sample paper, mark errors and create a vocabulary correction list.']
  ],paperTips:{'0546/1':'Paper 1: check your school’s assessment format, then practise the relevant reading/writing tasks under timed conditions.'}}
 ];
+// Suggested revision sessions are intentionally light around heavy exam days.
+// [id, date in January, subject guide id, focus, time (24-hour internally), minutes]
+const STARTER_STUDY=[
+ ['s04a','04','cs','Paper 1: theory definitions and data representation','16:30',60],
+ ['s04b','04','math','Algebra and ratio practice','18:00',45],
+ ['s05a','05','bio','Biology Paper 4: cells and transport','16:30',60],
+ ['s05b','05','physics','Forces, motion and equations','18:00',45],
+ ['s06a','06','cs','Paper 1: networks, security and hardware','16:30',60],
+ ['s06b','06','history','Build depth-study timeline and evidence','18:00',45],
+ ['s07a','07','cs','Paper 1: timed questions and corrections','16:30',60],
+ ['s07b','07','math','Mixed maths questions and mistake log','18:00',45],
+ ['s08a','08','math','Maths: timed paper practice','16:30',60],
+ ['s09a','09','math','Maths: weak topics and corrections','10:00',60],
+ ['s09b','09','bio','Biology Paper 4: application questions','14:00',60],
+ ['s10a','10','math','Maths: short timed drill and error review','10:00',60],
+ ['s10b','10','bio','Biology Paper 6: variables and graph skills','14:00',60],
+ ['s11a','11','bio','Biology Paper 4 and 6: final review','16:30',60],
+ ['s11b','11','physics','Physics Paper 4: equation practice','18:00',45],
+ ['s12a','12','physics','Physics Papers 4 and 6: final preparation','16:30',60],
+ ['s12b','12','cs','Paper 2: trace tables and pseudocode','18:00',45],
+ // 13 January has three exams: protect the evening rather than overload it.
+ ['s14a','14','history','History Paper 4: depth study evidence','16:30',60],
+ ['s14b','14','econ','Economics: market diagrams and evaluation','18:00',45],
+ ['s15a','15','econ','Economics Paper 2: structured responses','15:00',60],
+ ['s15b','15','physics','Physics Paper 2: multiple-choice drill','16:30',45],
+ ['s16a','16','econ','Economics Paper 2: timed questions','10:00',60],
+ ['s16b','16','physics','Physics Paper 2: weak areas and formulae','14:00',60],
+ ['s16c','16','malay','Malay: vocabulary and reading practice','17:00',45],
+ ['s17a','17','econ','Economics: definitions and evaluation practice','10:00',60],
+ ['s17b','17','malay','Malay Paper 1: timed practice','14:00',60],
+ ['s17c','17','physics','Physics MCQ: short final review','16:00',45],
+ ['s18a','18','malay','Malay: short final review','17:00',45],
+ ['s19a','19','bio','Biology Paper 2: multiple-choice drill','16:30',45],
+ ['s19b','19','history','History Paper 2: source analysis practice','17:30',45],
+ ['s20a','20','econ','Economics Paper 1: multiple-choice final review','16:30',45]
+].map(([id,day,subject,topic,start,duration])=>({id,day,subject,topic,start,duration}));
+const REVISIONS=GUIDES.map(g=>({value:g.id,label:g.name}));
+function initialStudy(){return STARTER_STUDY.map(s=>({...s}));}
+
 const REV_TOTAL=GUIDES.reduce((n,g)=>n+g.topics.length,0);
 const KEY='mock-exam-tracker-2027-v1';
 const ALL_EXAMS=DAYS.flatMap(d=>d.events);
 let saved={};try{saved=JSON.parse(localStorage.getItem(KEY)||'{}')||{};}catch(_){saved={};}
-let state={week:WEEKS.some(w=>w.id===saved.week)?saved.week:'all',freeOnly:!!saved.freeOnly,selected:DAYS.some(d=>d.id===saved.selected)?saved.selected:'13',done:typeof saved.done==='object'&&saved.done?saved.done:{},view:saved.view==='revision'?'revision':'calendar',subject:GUIDES.some(g=>g.id===saved.subject)?saved.subject:'cs',revision:typeof saved.revision==='object'&&saved.revision?saved.revision:{},notes:typeof saved.notes==='object'&&saved.notes?saved.notes:{}};
+let state={week:WEEKS.some(w=>w.id===saved.week)?saved.week:'all',freeOnly:!!saved.freeOnly,selected:DAYS.some(d=>d.id===saved.selected)?saved.selected:'13',done:typeof saved.done==='object'&&saved.done?saved.done:{},view:['calendar','revision','study'].includes(saved.view)?saved.view:'calendar',subject:GUIDES.some(g=>g.id===saved.subject)?saved.subject:'cs',revision:typeof saved.revision==='object'&&saved.revision?saved.revision:{},notes:typeof saved.notes==='object'&&saved.notes?saved.notes:{},studyPlan:Array.isArray(saved.studyPlan)?saved.studyPlan:initialStudy(),studyDone:typeof saved.studyDone==='object'&&saved.studyDone?saved.studyDone:{},studyWeek:WEEKS.some(w=>w.id===saved.studyWeek)?saved.studyWeek:'all',studySelected:DAYS.some(d=>d.id===saved.studySelected)?saved.studySelected:'04',studyEditing:null};
 function store(){try{localStorage.setItem(KEY,JSON.stringify(state));}catch(_){/* may be blocked in some private/file browsers */}}
 function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
 function currentDays(){return DAYS.filter(d=>(state.week==='all'||d.week===state.week)&&(!state.freeOnly||!d.events.length));}
@@ -288,10 +398,10 @@ function render(){ensureSelected();const visible=currentDays();
  if(!day){document.getElementById('details').innerHTML='';return;}
  document.getElementById('details').innerHTML=`<div class="detail-heading"><div><small>Selected day</small><h2>${esc(day.day)}, ${Number(day.id)} January</h2></div><span class="count-pill">${day.events.length} ${day.events.length===1?'exam':'exams'}</span></div>`+(day.events.length?`<div class="exam-list">${day.events.map(e=>`<article class="exam ${state.done[e.id]?'finished':''}" style="--c:${COLORS[e.subject]}"><div class="exam-head"><div><h3 class="exam-name">${esc(e.subject)}</h3><div class="exam-paper">Paper ${esc(e.paper)}</div></div><label class="done-check"><input type="checkbox" data-exam="${e.id}" ${state.done[e.id]?'checked':''} aria-label="Mark ${esc(e.subject)} paper ${esc(e.paper)} completed"> Done</label></div><div class="exam-line"></div><div class="exam-times"><div><span class="time-label">Starts</span><div class="big-time">${esc(e.start)}</div></div><div class="arrow" aria-hidden="true">→</div><div><span class="time-label">Ends</span><div class="big-time">${esc(e.end)}</div></div></div><div class="duration">Duration: ${esc(e.duration)}</div></article>`).join('')}</div>`:`<div class="free-details"><div class="icon" aria-hidden="true">✓</div><h3>Completely free day!</h3><p>No exams scheduled. This day is yours.</p>${nextExamAfter(day)?`<div class="free-next">Optional revision idea: prepare for <b>${esc(nextExamAfter(day).event.subject)}</b> on ${Number(nextExamAfter(day).day.id)} January.</div>`:'<div class="free-next">All scheduled mocks are over — enjoy the breathing room.</div>'}</div>`);
  document.getElementById('details').insertAdjacentHTML('beforeend',`<div class="notes-wrap"><label class="notes-label" for="dayNote">Your notes for ${esc(day.day)}, ${Number(day.id)} January</label><textarea class="day-note" id="dayNote" data-day-note="${day.id}" placeholder="Optional: revision ideas, what to pack, reminders...">${esc(state.notes[day.id]||'')}</textarea></div>`);
- renderGuide();updateView();store();
+ renderGuide();renderStudy();updateView();store();
 }
 function nextExamAfter(day){let offset=DAYS.findIndex(d=>d.id===day.id);for(let i=offset+1;i<DAYS.length;i++){if(DAYS[i].events.length)return {day:DAYS[i],event:DAYS[i].events[0]};}return null;}
-function updateView(){document.getElementById('calendarView').hidden=state.view!=='calendar';document.getElementById('revisionView').hidden=state.view!=='revision';document.querySelectorAll('[data-view]').forEach(b=>b.setAttribute('aria-selected',String(b.dataset.view===state.view)));}
+function updateView(){document.getElementById('calendarView').hidden=state.view!=='calendar';document.getElementById('revisionView').hidden=state.view!=='revision';document.getElementById('studyView').hidden=state.view!=='study';document.querySelectorAll('[data-view]').forEach(b=>b.setAttribute('aria-selected',String(b.dataset.view===state.view)));}
 function renderGuide(){
  const guide=GUIDES.find(g=>g.id===state.subject)||GUIDES[0];
  const completed=GUIDES.reduce((sum,g)=>sum+g.topics.filter(t=>state.revision[g.id+':'+t[0]]).length,0);
@@ -301,6 +411,93 @@ function renderGuide(){
  const related=DAYS.flatMap(day=>day.events.filter(e=>e.subject===guide.subject).map(e=>({day,e})));
  document.getElementById('guideDetail').innerHTML=`<section class="guide-main" aria-label="${esc(guide.name)} revision checklist"><div class="subject-title-row"><div><h3>${esc(guide.name)}</h3><p>${esc(guide.intro)}</p></div><span class="guide-progress-label">${done} / ${guide.topics.length}</span></div><div class="small-progress" role="progressbar" aria-label="${esc(guide.name)} revision progress" aria-valuenow="${done}" aria-valuemin="0" aria-valuemax="${guide.topics.length}"><div style="width:${done/guide.topics.length*100}%"></div></div><div class="topic-list">${guide.topics.map(t=>{const checked=!!state.revision[guide.id+':'+t[0]];return `<label class="topic ${checked?'checked':''}"><input type="checkbox" data-revision="${guide.id+':'+t[0]}" ${checked?'checked':''} aria-label="Complete ${esc(t[1])}"><span><strong>${esc(t[1])}</strong><small>${esc(t[2])}</small></span></label>`;}).join('')}</div></section><aside class="guide-side"><h4>YOUR UPCOMING PAPERS</h4>${related.map(({day,e})=>`<div class="paper-tip"><strong>${esc(e.paper)} · ${Number(day.id)} Jan</strong><div class="tiny">${esc(e.start)} · ${esc(e.duration)}</div><p>${esc(guide.paperTips[e.paper]||'Practise with your school’s exam materials and official marking guidance.')}</p></div>`).join('')}<div class="study-note"><strong>Study tip</strong><div>Start with the topics you find hardest. Use timed past-paper questions, mark your mistakes, and retry them a day or two later.</div></div><button type="button" class="toolbtn revision-to-calendar" data-jump="calendar">Back to calendar</button></aside>`;
 }
+
+function minutes(hhmm){const [h,m]=hhmm.split(':').map(Number);return 60*h+m;}
+function twelve(hhmm){const min=minutes(hhmm);const hr=Math.floor(min/60);return (hr%12||12)+':'+String(min%60).padStart(2,'0')+(hr>=12?' PM':' AM');}
+function twelveAt(min){return twelve(String(Math.floor(min/60)).padStart(2,'0')+':'+String(min%60).padStart(2,'0'));}
+function eventMinutes(s){const matches=s.match(/^(\d{1,2}):(\d{2}) (AM|PM)$/);return Number(matches[1])%12*60+Number(matches[2])+(matches[3]==='PM'?720:0);}
+function getDayStudy(id){return state.studyPlan.filter(x=>x.day===id).sort((a,b)=>minutes(a.start)-minutes(b.start));}
+function cleanPlanItem(s){return s&&typeof s.id==='string'&&DAYS.some(d=>d.id===s.day)&&GUIDES.some(g=>g.id===s.subject)&&typeof s.topic==='string'&&/^\d\d:\d\d$/.test(s.start)&&Number.isFinite(s.duration);}
+function renderStudy(){
+ state.studyPlan=state.studyPlan.filter(cleanPlanItem);
+ const completed=state.studyPlan.filter(s=>state.studyDone[s.id]).length;
+ const planned=state.studyPlan.reduce((sum,s)=>sum+s.duration,0);
+ document.getElementById('studyDoneCount').textContent=completed+' / '+state.studyPlan.length;
+ document.getElementById('studyHours').textContent=Number.isInteger(planned/60)?(planned/60)+'h':(planned/60).toFixed(1)+'h';
+ document.getElementById('studyFreeCount').textContent=DAYS.filter(d=>!state.studyPlan.some(s=>s.day===d.id)).length;
+ document.querySelectorAll('[data-study-week]').forEach(b=>b.setAttribute('aria-pressed',String(state.studyWeek===b.dataset.studyWeek)));
+ const weeks=WEEKS.filter(w=>state.studyWeek==='all'||w.id===state.studyWeek);
+ const html=weeks.map(w=>`<section class="study-week"><h3 class="study-week-label">${esc(w.name)}</h3><div class="study-week-grid">${DAYS.filter(d=>d.week===w.id).map(d=>{
+   const sessions=getDayStudy(d.id), examEvents=d.events.map(e=>({exam:true,sort:eventMinutes(e.start),e}));
+   const items=[...examEvents,...sessions.map(s=>({exam:false,sort:minutes(s.start),s}))].sort((a,b)=>a.sort-b.sort);
+   return `<article class="study-day ${state.studySelected===d.id?'selected':''}"><div class="study-day-header"><span>${esc(d.day)}</span><strong>${d.id}</strong></div><p class="study-day-hint ${d.events.length?'has-exam':''}">${d.events.length?d.events.length+' exam'+(d.events.length===1?'':'s'):'NO EXAMS'}</p>${items.length?items.map(i=>i.exam?`<div class="study-item exam-block"><div class="study-type exam-type">EXAM · FIXED</div><strong class="study-item-title">${esc(i.e.subject)} · ${esc(i.e.paper)}</strong><div class="study-item-time">${esc(i.e.start)} – ${esc(i.e.end)}</div></div>`:`<div class="study-item ${state.studyDone[i.s.id]?'study-item-complete':''}" style="--c:${esc(COLORS[GUIDES.find(g=>g.id===i.s.subject).subject])}"><div class="study-item-top"><span class="study-type">STUDY</span><label class="study-check"><input type="checkbox" data-study-check="${esc(i.s.id)}" ${state.studyDone[i.s.id]?'checked':''} aria-label="Mark study session completed"> Done</label></div><strong class="study-item-title">${esc(GUIDES.find(g=>g.id===i.s.subject).name)}: ${esc(i.s.topic)}</strong><div class="study-item-time">${twelve(i.s.start)} – ${twelveAt(minutes(i.s.start)+i.s.duration)}</div><button type="button" class="study-editbtn" data-study-edit="${esc(i.s.id)}">Edit session</button></div>`).join(''):'<div class="study-none">Rest / catch-up time</div>'}<button class="study-add" type="button" data-study-add="${d.id}">+ Add session</button></article>`;
+ }).join('')}</div></section>`).join('');
+ document.getElementById('studyContainer').innerHTML=html;
+ renderStudyEditor();
+}
+function dateOptions(selected){return DAYS.map(d=>`<option value="${d.id}" ${selected===d.id?'selected':''}>${esc(d.day)}, ${Number(d.id)} Jan</option>`).join('');}
+function studyTimeOptions(selected){const result=[];for(let h=7;h<=21;h++)for(let min=0;min<60;min+=15){const value=String(h).padStart(2,'0')+':'+String(min).padStart(2,'0');result.push(`<option value="${value}" ${selected===value?'selected':''}>${twelve(value)}</option>`);}return result.join('');}
+function renderStudyEditor(){
+ const root=document.getElementById('studyEditor');
+ if(!state.studyEditing){root.hidden=true;root.innerHTML='';return;}
+ const isEdit=state.studyEditing!=='new';
+ const original=isEdit?state.studyPlan.find(s=>s.id===state.studyEditing):null;
+ if(isEdit&&!original){state.studyEditing=null;renderStudyEditor();return;}
+ const entry=original||{day:state.studySelected,subject:'math',topic:'',start:'16:30',duration:60};
+ root.hidden=false;
+ root.innerHTML=`<div class="study-form-head"><div><div class="kicker">Personalise your plan</div><h3>${isEdit?'Edit study session':'Add a study session'}</h3><p>Choose a date, subject and focus. Sessions cannot overlap an exam or another study block.</p></div><button class="study-cancel" type="button" data-study-cancel aria-label="Close study editor">Close</button></div>
+ <form class="study-form" id="studyForm">
+   <div class="study-field"><label for="studyDate">Date</label><select id="studyDate" name="day" required>${dateOptions(entry.day)}</select></div>
+   <div class="study-field"><label for="studySubject">Subject</label><select id="studySubject" name="subject" required>${REVISIONS.map(g=>`<option value="${g.value}" ${entry.subject===g.value?'selected':''}>${esc(g.label)}</option>`).join('')}</select></div>
+   <div class="study-field wide"><label for="studyTopic">What will you revise?</label><input id="studyTopic" name="topic" type="text" required maxlength="120" value="${esc(entry.topic)}" placeholder="e.g. Timed past paper and marking"></div>
+   <div class="study-field"><label for="studyStart">Start time</label><select name="start" id="studyStart">${studyTimeOptions(entry.start)}</select></div>
+   <div class="study-field"><label for="studyDuration">Duration</label><select name="duration" id="studyDuration">${[30,45,60,75,90,120].map(n=>`<option value="${n}" ${n===entry.duration?'selected':''}>${n>=60?Math.floor(n/60)+'h'+(n%60?' '+n%60+'m':''):n+' minutes'}</option>`).join('')}</select></div>
+   <div class="study-form-actions"><button class="study-save" type="submit">${isEdit?'Save changes':'Add to timetable'}</button><button class="study-cancel" type="button" data-study-cancel>Cancel</button>${isEdit?'<button class="study-remove" type="button" data-study-delete>Delete session</button>':''}</div>
+   <div class="study-error" id="studyError" role="alert" hidden></div>
+ </form>`;
+}
+function showStudyError(message){const el=document.getElementById('studyError');if(el){el.textContent=message;el.hidden=false;}}
+function checkStudyConflict(entry,omitId){
+ const start=minutes(entry.start),end=start+Number(entry.duration);
+ if(start<7*60||end>22*60)return 'Please choose a study session between 7:00 AM and 10:00 PM.';
+ const examDay=DAYS.find(d=>d.id===entry.day);
+ for(const exam of examDay.events){const exStart=eventMinutes(exam.start),exEnd=eventMinutes(exam.end);if(start<exEnd&&end>exStart)return 'This session overlaps '+exam.subject+' ('+exam.start+'–'+exam.end+'). Please choose another time.';}
+ for(const other of state.studyPlan){if(other.day!==entry.day||other.id===omitId)continue;const a=minutes(other.start),b=a+other.duration;if(start<b&&end>a)return 'This overlaps your existing '+GUIDES.find(g=>g.id===other.subject).name+' study session ('+twelve(other.start)+'–'+twelveAt(b)+').';}
+ return '';
+}
+function openStudyEditor(day,id){state.studySelected=day;state.studyEditing=id||'new';renderStudy();store();document.getElementById('studyEditor').scrollIntoView({behavior:'smooth',block:'nearest'});}
+function saveStudyForm(form){
+ const data=new FormData(form);const day=data.get('day');const subject=data.get('subject');const topic=String(data.get('topic')||'').trim();const start=data.get('start');const duration=Number(data.get('duration'));
+ if(!DAYS.some(d=>d.id===day)||!GUIDES.some(g=>g.id===subject)||!topic||topic.length>120||!/^\d\d:\d\d$/.test(start)||![30,45,60,75,90,120].includes(duration)){showStudyError('Please fill in all fields with valid values.');return;}
+ const omitId=state.studyEditing==='new'?null:state.studyEditing;
+ const entry={id:omitId||('session-'+Date.now()+'-'+Math.random().toString(36).slice(2,7)),day,subject,topic,start,duration};
+ const error=checkStudyConflict(entry,omitId);if(error){showStudyError(error);return;}
+ if(omitId)state.studyPlan=state.studyPlan.map(x=>x.id===omitId?entry:x);else state.studyPlan.push(entry);
+ state.studySelected=day;state.studyEditing=null;
+ const match=DAYS.find(d=>d.id===day);
+ if(match)state.studyWeek=state.studyWeek==='all'||state.studyWeek===match.week?state.studyWeek:match.week;
+ renderStudy();store();
+}
+function exportStudy(){
+ const stamp=new Date().toISOString().replace(/[-:]/g,'').replace(/\.\d{3}/,'');
+ const lines=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Mock Exam Planner Study Sessions//EN','CALSCALE:GREGORIAN','X-WR-CALNAME:Mock Exam Study Sessions January 2027'];
+ for(const s of state.studyPlan){const guide=GUIDES.find(g=>g.id===s.subject),begin=s.start.replace(':','')+'00',endM=minutes(s.start)+s.duration,end=String(Math.floor(endM/60)).padStart(2,'0')+String(endM%60).padStart(2,'0')+'00';
+   lines.push('BEGIN:VEVENT','UID:'+s.id.replace(/[^a-z0-9-]/gi,'')+'-202701'+s.day+'@mock-study-planner','DTSTAMP:'+stamp,'DTSTART;TZID=Asia/Kuala_Lumpur:202701'+s.day+'T'+begin,'DTEND;TZID=Asia/Kuala_Lumpur:202701'+s.day+'T'+end,'SUMMARY:'+icsEscape('Study: '+guide.name),'DESCRIPTION:'+icsEscape(s.topic),'END:VEVENT');
+ }
+ lines.push('END:VCALENDAR');const blob=new Blob([lines.join('\r\n')+'\r\n'],{type:'text/calendar;charset=utf-8'}),url=URL.createObjectURL(blob),link=document.createElement('a');link.href=url;link.download='study-timetable-january-2027.ics';document.body.appendChild(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
+document.getElementById('studyView').addEventListener('click',e=>{
+ const week=e.target.closest('[data-study-week]');if(week){state.studyWeek=week.dataset.studyWeek;state.studyEditing=null;renderStudy();store();return;}
+ const add=e.target.closest('[data-study-add]');if(add){openStudyEditor(add.dataset.studyAdd);return;}
+ const edit=e.target.closest('[data-study-edit]');if(edit){const s=state.studyPlan.find(x=>x.id===edit.dataset.studyEdit);if(s)openStudyEditor(s.day,s.id);return;}
+ if(e.target.closest('[data-study-cancel]')){state.studyEditing=null;renderStudyEditor();return;}
+ if(e.target.closest('[data-study-delete]')){const id=state.studyEditing;const s=state.studyPlan.find(x=>x.id===id);if(s&&confirm('Delete this '+GUIDES.find(g=>g.id===s.subject).name+' study session?')){state.studyPlan=state.studyPlan.filter(x=>x.id!==id);delete state.studyDone[id];state.studyEditing=null;renderStudy();store();}return;}
+});
+document.getElementById('studyView').addEventListener('change',e=>{if(e.target.matches('[data-study-check]')){state.studyDone[e.target.dataset.studyCheck]=e.target.checked;renderStudy();store();}});
+document.getElementById('studyView').addEventListener('submit',e=>{if(e.target.id==='studyForm'){e.preventDefault();saveStudyForm(e.target);}});
+document.getElementById('studyResetBtn').addEventListener('click',()=>{if(confirm('Replace your edited study sessions with the suggested plan? This also resets completed study checkmarks. Exam and revision progress will remain unchanged.')){state.studyPlan=initialStudy();state.studyDone={};state.studyEditing=null;renderStudy();store();}});
+document.getElementById('studyExportBtn').addEventListener('click',exportStudy);
+
 document.addEventListener('click',event=>{const view=event.target.closest('[data-view]');if(view){state.view=view.dataset.view;updateView();store();return;}const subject=event.target.closest('[data-subject]');if(subject){state.subject=subject.dataset.subject;renderGuide();store();return;}const jump=event.target.closest('[data-jump]');if(jump){state.view=jump.dataset.jump;updateView();store();window.scrollTo({top:0,behavior:'smooth'});return;}const week=event.target.closest('[data-week]');if(week){state.week=week.dataset.week;render();return;}const day=event.target.closest('[data-day]');if(day){state.selected=day.dataset.day;render();document.getElementById('details').scrollIntoView({behavior:'smooth',block:'nearest'});}});
 document.getElementById('freeOnly').addEventListener('change',e=>{state.freeOnly=e.target.checked;render();});
 document.getElementById('details').addEventListener('change',e=>{if(e.target.matches('[data-exam]')){state.done[e.target.dataset.exam]=e.target.checked;render();}});
