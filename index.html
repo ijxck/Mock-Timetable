@@ -206,12 +206,64 @@
   @media(max-width:700px){.study-head{flex-direction:column}.study-actions{justify-content:flex-start}.study-week-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.study-form{grid-template-columns:repeat(2,minmax(0,1fr))}.study-field.wide{grid-column:span 2}}
   @media(max-width:450px){.study-form{grid-template-columns:1fr}.study-field.wide{grid-column:span 1}.study-metric{min-width:115px}.study-day{padding:10px 8px}}
   @media print{#studyView{display:none!important}}
+
+  /* Preparation roadmap: November 2026 through the eve of the first exam */
+  .prep-hero{border:1px solid #436783;border-radius:20px;background:radial-gradient(70% 180% at 100% 0%,rgba(80,139,169,.18),transparent 76%),linear-gradient(135deg,#1a2c48,#132135);padding:24px;margin:8px 0 18px}
+  .prep-hero h2{font-size:clamp(25px,3vw,35px);margin:5px 0 8px;letter-spacing:-.035em}
+  .prep-hero p{font-size:13px;color:#bbcae1;max-width:770px;margin:0;line-height:1.65}
+  .prep-hero-meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:17px}
+  .prep-chip{display:inline-flex;align-items:center;gap:7px;background:#223b55;border:1px solid #446480;color:#d7e7f4;border-radius:99px;padding:7px 11px;font-size:11px;font-weight:750}
+  .prep-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:13px 0 19px}
+  .prep-stat{padding:15px 17px;border:1px solid var(--line);border-radius:14px;background:var(--panel)}
+  .prep-stat strong{display:block;font-size:24px;line-height:1.2;margin-bottom:4px;font-variant-numeric:tabular-nums}
+  .prep-stat small{color:var(--muted);font-size:11px}
+  .prep-actions{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:17px}
+  .prep-filters{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .prep-filters label{font-size:12px;color:#c8d6ec;font-weight:750}
+  .prep-select{border:1px solid #4b6384;border-radius:10px;background:#17253c;color:var(--text);padding:10px 12px;min-height:40px;max-width:100%;font-size:12px}
+  .prep-week{margin-bottom:16px;border:1px solid var(--line);background:#111b2f;border-radius:17px;overflow:hidden}
+  .prep-week-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;padding:19px 20px;background:#19283f;border-bottom:1px solid var(--line)}
+  .prep-week-head .number{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--mint);font-weight:850}
+  .prep-week-head h3{font-size:19px;line-height:1.25;letter-spacing:-.025em;margin:5px 0 7px}
+  .prep-week-head p{font-size:12px;color:#acbfd9;margin:0;max-width:720px;line-height:1.65}
+  .prep-week-score{min-width:95px;flex-shrink:0;text-align:right}
+  .prep-week-score strong{font-size:18px;font-variant-numeric:tabular-nums}
+  .prep-week-score small{display:block;font-size:10px;color:var(--muted);margin-bottom:7px}
+  .prep-week-score .small-progress{margin:0}
+  .prep-daystrip{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px;padding:13px 18px 4px}
+  .prep-day{border:1px solid #344865;background:#14233a;border-radius:9px;padding:8px 6px;text-align:center;min-width:0}
+  .prep-day strong{display:block;font-size:10px;color:#b3c7dc}
+  .prep-day span{font-size:17px;font-weight:800;font-variant-numeric:tabular-nums}
+  .prep-day small{display:block;font-size:9px;color:var(--mint);line-height:1.2;white-space:nowrap}
+  .prep-day.rest{background:#18332f;border-color:#305b50}.prep-day.rest small{color:#a7dfc7}
+  .prep-tasks{padding:14px 18px 17px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+  .prep-task{display:flex;align-items:flex-start;gap:12px;padding:13px 12px;border:1px solid #384b68;border-radius:12px;background:#18253a;cursor:pointer;min-width:0}
+  .prep-task:hover{border-color:#6582aa;background:#20324e}
+  .prep-task.checked{background:#17352f;border-color:#376c5a}
+  .prep-task input{accent-color:var(--mint);width:17px;height:17px;flex-shrink:0;margin:4px 0 0;cursor:pointer}
+  .prep-task-content{min-width:0;flex:1}
+  .prep-task-top{display:flex;align-items:center;flex-wrap:wrap;gap:5px 8px;color:#a9b9cf;font-size:10px;font-weight:750}
+  .prep-subject{font-size:10px;color:var(--color,var(--mint));font-weight:850}
+  .prep-task-title{display:block;font-size:13px;font-weight:800;margin-top:5px;line-height:1.45}
+  .prep-task.checked .prep-task-title{text-decoration:line-through;color:#b1d6c9}
+  .prep-task-desc{font-size:11px;line-height:1.55;color:var(--muted);margin:5px 0 0}
+  .prep-foot{display:grid;grid-template-columns:1fr auto;align-items:center;gap:10px;border-top:1px solid #2f425e;padding:13px 18px 16px}
+  .prep-foot label{font-size:11px;font-weight:800;color:#c9d8eb;display:block;margin-bottom:6px}
+  .prep-note{display:block;width:100%;background:#0d1a2e;color:#fff;border:1px solid #496180;border-radius:9px;padding:10px;min-height:57px;max-height:250px;resize:vertical;font-size:12px;line-height:1.5}
+  .prep-note::placeholder{color:#869ab5}
+  .prep-guide-link{align-self:center}
+  .prep-tip{margin:13px 0 20px;display:flex;gap:10px;align-items:flex-start;border-radius:13px;padding:13px 16px;background:#1c3040;border:1px solid #3a5d68;color:#d2e9df;font-size:12px;line-height:1.6}
+  .prep-empty{padding:26px;text-align:center;color:var(--muted);font-size:13px}
+  @media(max-width:760px){.prep-tasks{grid-template-columns:1fr}.prep-hero{padding:19px}.prep-week-head{padding:15px}.prep-daystrip{padding:10px 12px 3px;gap:4px}.prep-day{padding:7px 3px}.prep-tasks{padding:11px 12px}.prep-foot{padding:12px;grid-template-columns:1fr}.prep-week-score{min-width:65px}.prep-summary{gap:7px}.prep-stat{padding:12px}.prep-stat strong{font-size:21px}.prep-chip{font-size:10px}.prep-select{width:100%}}
+  @media(max-width:420px){.prep-day span{font-size:14px}.prep-day small{font-size:8px}.prep-day strong{font-size:9px}.prep-actions{align-items:stretch}.prep-filters{width:100%}.prep-filters label{width:100%}.prep-filters .prep-select{width:100%}.app-tabs{overflow-x:auto;scrollbar-width:thin}.app-tab{flex:0 0 auto;padding:10px 12px}}
+  @media(max-width:650px){.app-tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;overflow:visible}.app-tab{width:100%;min-width:0;white-space:normal;padding:10px 8px}}
+  @media print{#roadmapView{display:none!important}}
 </style>
 </head>
 <body>
 <main class="wrap">
   <header class="header">
-    <div><div class="kicker">Exam planner · January 2027</div><h1>Mock exam timetable<span style="color:var(--mint)">.</span></h1><p class="sub">Tap a date for exam details, mark papers as finished, and keep track of your free days. Your progress saves automatically in this browser.</p></div>
+    <div><div class="kicker">Exam planner · Nov 2026 – Jan 2027</div><h1>Mock exam timetable<span style="color:var(--mint)">.</span></h1><p class="sub">Tap a date for exam details, mark papers as finished, keep track of free days, and follow a pre-mock revision plan. Your progress saves automatically in this browser.</p></div>
     <div class="header-right"><button class="toolbtn" id="printBtn" type="button" aria-label="Print timetable"><svg viewBox="0 0 24 24"><path d="M6 9V3h12v6M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2M6 14h12v7H6z"/></svg>Print</button><button class="toolbtn" id="calendarBtn" type="button" aria-label="Download calendar events"><svg viewBox="0 0 24 24"><path d="M8 2v4m8-4v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zM8 15h8m-8 3h5"/></svg>Export calendar</button></div>
   </header>
   <div class="stats" aria-label="Exam summary">
@@ -221,7 +273,7 @@
     <div class="stat"><span>Completed</span><strong id="completedCount" class="green">0 / 15</strong></div>
   </div>
   <div class="progress-wrap"><div class="progress" role="progressbar" aria-label="Exam completion" aria-valuemin="0" aria-valuemax="15" aria-valuenow="0" id="progress"><div id="progressFill"></div></div><span class="prog-label" id="progressText">0% complete</span></div>
-  <nav class="app-tabs" role="tablist" aria-label="Planner sections"><button class="app-tab" type="button" id="calendarTab" role="tab" data-view="calendar" aria-controls="calendarView" aria-selected="true">Calendar</button><button class="app-tab" type="button" id="studyTab" role="tab" data-view="study" aria-controls="studyView" aria-selected="false">Study timetable</button><button class="app-tab" type="button" id="revisionTab" role="tab" data-view="revision" aria-controls="revisionView" aria-selected="false">Revision guide</button></nav>
+  <nav class="app-tabs" role="tablist" aria-label="Planner sections"><button class="app-tab" type="button" id="calendarTab" role="tab" data-view="calendar" aria-controls="calendarView" aria-selected="true">Calendar</button><button class="app-tab" type="button" id="studyTab" role="tab" data-view="study" aria-controls="studyView" aria-selected="false">Study timetable</button><button class="app-tab" type="button" id="roadmapTab" role="tab" data-view="roadmap" aria-controls="roadmapView" aria-selected="false">Before mocks</button><button class="app-tab" type="button" id="revisionTab" role="tab" data-view="revision" aria-controls="revisionView" aria-selected="false">Revision guide</button></nav>
   <section id="calendarView" role="tabpanel" aria-labelledby="calendarTab">
   <div class="toolbar"><nav class="segments" role="group" aria-label="Filter calendar by week"><button type="button" class="seg" data-week="all" aria-pressed="true">All weeks</button><button type="button" class="seg" data-week="w1" aria-pressed="false">Week 1</button><button type="button" class="seg" data-week="w2" aria-pressed="false">Week 2</button><button type="button" class="seg" data-week="w3" aria-pressed="false">Week 3</button></nav><label class="filter"><input type="checkbox" id="freeOnly">Show free days only</label></div>
   <div class="legend" aria-label="Subject colour legend"><span class="legend-item"><i class="dot" style="--c:#8d9aff"></i>Computer Science</span><span class="legend-item"><i class="dot" style="--c:#c5a0fa"></i>Maths</span><span class="legend-item"><i class="dot" style="--c:#63dba0"></i>Biology</span><span class="legend-item"><i class="dot" style="--c:#66c6e6"></i>Physics</span><span class="legend-item"><i class="dot" style="--c:#e8a36f"></i>History</span><span class="legend-item"><i class="dot" style="--c:#e7cb73"></i>Economics</span><span class="legend-item"><i class="dot" style="--c:#f2a1c8"></i>Malay</span></div>
@@ -233,12 +285,39 @@
       <div><div class="kicker">Make a plan, then make progress</div><h2>Study timetable</h2><p>A suggested revision plan for 4–24 January, fitted around your actual papers. Check off sessions as you go, or edit the schedule to suit you. Exam times are fixed; suggested study blocks are yours to change.</p></div>
       <div class="study-actions"><button class="toolbtn" type="button" id="studyExportBtn">Export study sessions</button><button class="toolbtn" type="button" id="studyResetBtn">Restore suggested plan</button></div>
     </div>
+    <div class="prep-tip"><span aria-hidden="true">✦</span><span><b>Preparing before January?</b> Start with the week-by-week plan for 23 November – 7 January. <button class="toolbtn" type="button" data-jump="roadmap" style="margin-top:8px">Open pre-exam roadmap</button></span></div>
     <div class="study-metrics"><div class="study-metric"><strong id="studyDoneCount">0 / 0</strong><span>Study sessions completed</span></div><div class="study-metric"><strong id="studyHours">0h</strong><span>Total planned study time</span></div><div class="study-metric"><strong id="studyFreeCount">0</strong><span>Days without study sessions</span></div></div>
     <div class="study-toolbar"><nav class="segments" role="group" aria-label="Filter study plan by week"><button class="seg" type="button" data-study-week="all" aria-pressed="true">All weeks</button><button class="seg" type="button" data-study-week="w1" aria-pressed="false">Week 1</button><button class="seg" type="button" data-study-week="w2" aria-pressed="false">Week 2</button><button class="seg" type="button" data-study-week="w3" aria-pressed="false">Week 3</button></nav><div class="study-help">Click “+ Add” on any day to plan a session.</div></div>
     <div class="study-legend"><span class="swatch" style="background:#f19c83"></span>Exam (fixed) <span class="swatch" style="background:var(--mint)"></span>Study session (editable) <span>All displayed times are 12-hour Malaysia time.</span></div>
     <div id="studyContainer" aria-label="Study plan for January 2027"></div>
     <div id="studyEditor" class="study-form-card" hidden></div>
     <p class="footer">This is a suggested plan, not a compulsory routine. Short, focused revision with proper breaks is more useful than filling every free hour. Changes save to this browser automatically.</p>
+  </section>
+
+  <section id="roadmapView" role="tabpanel" aria-labelledby="roadmapTab" hidden>
+    <div class="prep-hero">
+      <div class="kicker">Seven-week study roadmap · 23 Nov – 7 Jan</div>
+      <h2>Get ready before exam season.</h2>
+      <p>Start with the topics you struggle with, build recall and exam technique, then move into timed past papers. This is a flexible set of suggestions for all seven of your subjects—not seven weeks of compulsory homework.</p>
+      <div class="prep-hero-meta"><span class="prep-chip">First mock · Computer Science · 8 Jan</span><span class="prep-chip">One rest / catch-up day most weeks</span><span class="prep-chip" id="prepCountdown">Countdown to first exam</span></div>
+    </div>
+    <div class="prep-summary">
+      <div class="prep-stat"><strong id="prepCompleted">0 / 0</strong><small>Sessions checked off</small></div>
+      <div class="prep-stat"><strong id="prepHours">0h</strong><small>Suggested revision time</small></div>
+      <div class="prep-stat"><strong id="prepWeekProgress">0 / 7</strong><small>Weekly goals completed</small></div>
+    </div>
+    <div class="study-method" aria-label="How to use the roadmap">
+      <div class="method-card"><span class="method-n">NOVEMBER · DIAGNOSE</span><strong>Find your weak topics</strong><p>Try real questions without notes. Identify what costs you marks rather than revising everything equally.</p></div>
+      <div class="method-card"><span class="method-n">DECEMBER · APPLY</span><strong>Practise, mark, repeat</strong><p>Alternate targeted questions with timed sections, building a mistake log and revisiting errors.</p></div>
+      <div class="method-card"><span class="method-n">JANUARY · TAPER</span><strong>Short final reviews</strong><p>Front-load preparation for Computer Science, Maths and Biology. Avoid late-night cramming before your first mock.</p></div>
+    </div>
+    <div class="prep-actions">
+      <div class="prep-filters"><label for="prepWeekSelect">Show weeks</label><select class="prep-select" id="prepWeekSelect" aria-label="Show roadmap week"><option value="all">All 7 weeks</option></select><label for="prepSubjectSelect">Subject</label><select class="prep-select" id="prepSubjectSelect"><option value="all">All subjects</option></select></div>
+      <label class="filter"><input type="checkbox" id="prepPending">Unfinished only</label>
+    </div>
+    <div class="prep-tip"><span aria-hidden="true">✦</span><span><b>How to use this:</b> Choose a subject, tackle the next task, mark it when completed, and record anything you need to revisit. The dates are suggestions, not deadlines. Your existing January Study Timetable handles the actual exam period.</span></div>
+    <div id="prepContainer" aria-label="Seven-week pre-exam study roadmap"></div>
+    <p class="footer">Suggested activities are not official syllabus requirements. Check your teachers' topic lists and your school's paper format, especially History options and Mathematics Unit 2F. The exam dates remain unchanged in the Calendar tab. Roadmap progress and notes are saved in this browser.</p>
   </section>
   <section id="revisionView" role="tabpanel" aria-labelledby="revisionTab" hidden>
     <div class="guide-head"><div><div class="kicker">Study smarter, not longer</div><h2>Revision guide</h2><p>Choose a subject, work through the checklists, and prepare for the specific papers on your timetable. All checkmarks save automatically. Topics are revision prompts, not a replacement for your school's syllabus.</p></div><div class="guide-summary"><strong id="revisionProgress">0 / 42</strong><span>Revision tasks completed</span></div></div>
@@ -252,7 +331,7 @@
     <div id="guideDetail" class="guide-body" aria-live="polite"></div>
     <p class="footer">These are general revision suggestions. Check your exact school syllabus, option topics, and permitted calculator rules before deciding what to prioritise.</p>
   </section>
-  <footer class="footer"><b>Timing note:</b> Finishing times are recalculated from the stated start times and starred durations, which sometimes differ from the originally supplied end times. Confirm timings with your school before exam day.<br><span class="no-print">Exam and study progress, revision checkmarks, notes and filters are stored locally in your browser (not synced across devices). This file works offline. Calendar export uses Malaysia time (UTC+08:00). </span><button class="toolbtn no-print" id="resetBtn" style="margin-top:14px" type="button">Reset completed exams</button></footer>
+  <footer class="footer"><b>Timing note:</b> Finishing times are recalculated from the stated start times and starred durations, which sometimes differ from the originally supplied end times. Confirm timings with your school before exam day.<br><span class="no-print">Exam and study progress, pre-exam roadmap tasks, revision checkmarks, notes and filters are stored locally in your browser (not synced across devices). This file works offline. Calendar export uses Malaysia time (UTC+08:00). </span><button class="toolbtn no-print" id="resetBtn" style="margin-top:14px" type="button">Reset completed exams</button></footer>
 </main>
 <script>
 'use strict';
@@ -372,11 +451,80 @@ const STARTER_STUDY=[
 const REVISIONS=GUIDES.map(g=>({value:g.id,label:g.name}));
 function initialStudy(){return STARTER_STUDY.map(s=>({...s}));}
 
+
+// Optional revision plan from 23 November 2026 until the day before the first exam.
+// Each entry: [YYYY-MM-DD, guide-id, activity, tangible outcome, suggested minutes].
+const PREP_WEEKS=[
+ {id:'p1',start:'2026-11-23',end:'2026-11-29',title:'Find your starting point',stage:'NOVEMBER · DIAGNOSE',goal:'Use questions from topics you have already covered to identify gaps. Make a single error log for all seven subjects.',tasks:[
+ ['2026-11-23','math','Maths diagnostic questions','Try mixed number, algebra and geometry questions. List the three skills costing you the most marks.',50],
+ ['2026-11-24','bio','Biology: Core and Extended knowledge check','Answer short Paper 4 questions on taught topics. Mark them and note missing key terms.',50],
+ ['2026-11-25','cs','Computer Science: Paper 1 baseline','Test data representation, hardware and networks without notes. Start a definition list.',50],
+ ['2026-11-26','physics','Physics: formula and units baseline','Recall equations, explain units, and try five calculation questions from taught topics.',50],
+ ['2026-11-27','history','History: build your evidence bank','Create a timeline for your actual core and depth-study options, with named evidence.',45],
+ ['2026-11-28','econ','Economics: key diagrams','Draw and explain demand, supply and equilibrium shifts; correct any missing labels.',45],
+ ['2026-11-28','malay','Malay: vocabulary starter','Review useful vocabulary and complete a short reading exercise matched to your Paper 1.',30]
+ ]},
+ {id:'p2',start:'2026-11-30',end:'2026-12-06',title:'Rebuild the foundations',stage:'DECEMBER · KNOW THE CONTENT',goal:'Focus on the weakest areas from the diagnostic. Prioritise understanding and accurate definitions before speed.',tasks:[
+ ['2026-11-30','cs','Computer Science: data and systems','Practise binary/hex conversions, file sizes and CPU, memory and storage explanations.',60],
+ ['2026-12-01','math','Maths: algebra and number methods','Practise ratio, fractions, rearranging and equations; show every step.',65],
+ ['2026-12-02','bio','Biology: transport and enzymes','Explain diffusion, osmosis, active transport and enzyme action using exam wording.',60],
+ ['2026-12-03','physics','Physics: motion, forces and energy','Interpret graphs, rearrange equations and check units in calculations.',60],
+ ['2026-12-04','history','History: structured paragraphs','Write one causation response using precise evidence, explanation and judgement.',50],
+ ['2026-12-05','econ','Economics: markets and policy','Practise demand/supply graphs and explain causes and consequences in chains.',55],
+ ['2026-12-05','malay','Malay: reading and grammar','Read one short passage and correct recurring grammar and vocabulary mistakes.',40]
+ ]},
+ {id:'p3',start:'2026-12-07',end:'2026-12-13',title:'Learn the paper techniques',stage:'DECEMBER · APPLY IT',goal:'Match your revision to the format of each paper, especially pseudocode and the sciences’ Alternative to Practical papers.',tasks:[
+ ['2026-12-07','cs','Computer Science Paper 2: pseudocode','Write selection, iteration and array solutions by hand, then trace and test them.',65],
+ ['2026-12-08','bio','Biology Paper 6: practical skills','Practise variables, graph axes, tables, drawing and method improvements.',55],
+ ['2026-12-09','physics','Physics Paper 6: practical skills','Work on graphs, safety, measurement precision and investigation evaluation.',55],
+ ['2026-12-10','math','Maths: mixed timed problem solving','Try a timed set of unfamiliar questions, then redo errors without notes.',70],
+ ['2026-12-11','history','History Paper 4: depth-study evidence','Build examples for the actual depth study and plan one extended response.',60],
+ ['2026-12-12','econ','Economics Paper 2: evaluation','Answer a structured question with diagrams where useful and a justified judgement.',60],
+ ['2026-12-12','malay','Malay: exam-style response','Complete a school-matched Paper 1 task and check wording and accuracy.',40]
+ ]},
+ {id:'p4',start:'2026-12-14',end:'2026-12-20',title:'Start working against the clock',stage:'DECEMBER · BUILD STAMINA',goal:'Practise timed sections, mark with an official scheme and spend as much care reviewing as answering.',tasks:[
+ ['2026-12-14','cs','Computer Science Paper 1: timed section','Complete a timed theory section, then rewrite answers missing key marking points.',70],
+ ['2026-12-15','math','Maths: timed paper section','Do 75 minutes of 2F-style questions; mark methods and repeat every incorrect one.',90],
+ ['2026-12-16','bio','Biology Paper 4: applied questions','Do structured questions under time pressure and annotate precise lost marks.',75],
+ ['2026-12-17','physics','Physics Paper 4: calculations and explanations','Complete timed multi-step problems, checking units and written physics reasoning.',75],
+ ['2026-12-18','history','History Paper 1: evidence under time pressure','Write timed answers for your taught options; improve explanation and specificity.',60],
+ ['2026-12-19','econ','Economics: timed analysis and evaluation','Complete a Paper 2-style case question and mark definition, analysis and evaluation.',65],
+ ['2026-12-19','malay','Malay: revise frequent mistakes','Practise reading or writing in the school paper format and correct vocabulary errors.',40]
+ ]},
+ {id:'p5',start:'2026-12-21',end:'2026-12-27',title:'Your first mock simulations',stage:'LATE DECEMBER · TEST YOURSELF',goal:'Use longer timed practice and fix the big recurring mistakes. Protect some holiday and rest time.',tasks:[
+ ['2026-12-21','cs','Computer Science Paper 1: extended practice','Attempt around 90 minutes of theory questions, then mark and make a one-page corrections sheet.',105],
+ ['2026-12-22','math','Mathematics: full timed practice','Try a school-matched 2F paper under your stated two-hour timing; review afterwards.',120],
+ ['2026-12-23','bio','Biology Papers 4 and 6: mixed practice','Do a Paper 4 section followed by a practical graph/variables question.',75],
+ ['2026-12-24','physics','Physics Papers 4 and 6: mixed practice','Combine calculations with data interpretation or experimental design questions.',75],
+ ['2026-12-26','history','History Paper 4: extended timed answer','Choose your taught depth study, attempt a long answer and improve factual support.',70],
+ ['2026-12-26','econ','Economics: explain, analyse and evaluate','Answer one structured data question and strengthen its chain of reasoning.',55]
+ ]},
+ {id:'p6',start:'2026-12-28',end:'2027-01-03',title:'Rehearse the real thing',stage:'NEW YEAR · PAST PAPERS',goal:'Prioritise paper accuracy and careful marking. Make a short “last look” sheet for each subject.',tasks:[
+ ['2026-12-28','cs','Computer Science Paper 1: mock run','Attempt a full paper using your school’s confirmed timing; mark and list final weak areas.',105],
+ ['2026-12-29','math','Mathematics: second timed paper','Attempt a full unit-matched paper, then practise only the types you missed.',120],
+ ['2026-12-30','bio','Biology Paper 4: timed questions','Attempt a long timed set, mark accurately and review common command words.',75],
+ ['2026-12-31','physics','Physics Paper 4: timed questions','Attempt a long timed set and memorise weak equations, units and explanations.',75],
+ ['2027-01-02','history','History: Paper 1 and 4 quick simulation','Use a timed sample and check facts, argument structure and depth-study examples.',90],
+ ['2027-01-03','econ','Economics Paper 2: case practice','Complete structured responses and prepare one-page diagram and definition notes.',60],
+ ['2027-01-03','malay','Malay Paper 1: timed sample','Try a school-matched timed task and revisit repeated language mistakes.',50]
+ ]},
+ {id:'p7',start:'2027-01-04',end:'2027-01-07',title:'Final four days before mocks',stage:'JANUARY · PRIORITISE & REST',goal:'Computer Science is first, followed by Maths, Biology and Physics. Use short targeted review rather than learning everything from scratch.',tasks:[
+ ['2027-01-04','cs','Computer Science Paper 1: key concepts','Focus on your weakest definitions, systems and data representation questions.',60],
+ ['2027-01-04','math','Maths: fix recurring errors','Revisit your personal mistake log and redo 2F-style questions without hints.',45],
+ ['2027-01-05','bio','Biology Papers 4 and 6: quick rotation','Review common extended theory mistakes and one Alternative to Practical question.',60],
+ ['2027-01-05','physics','Physics Papers 4 and 6: quick rotation','Rehearse equations, units, graphs and method-improvement answers.',45],
+ ['2027-01-06','cs','Computer Science Paper 1: short timed drill','Do a short question set and write a final one-page recall sheet.',45],
+ ['2027-01-06','history','History: keep evidence fresh','Review core and depth-study evidence for next week without starting new content.',30],
+ ['2027-01-07','cs','Computer Science: calm final recall','Check definitions and frequent errors for 30 minutes. Pack what you need and stop.',30]
+ ]}
+].map(w=>({...w,tasks:w.tasks.map(([date,subject,title,detail,minutes],i)=>({id:w.id+'-'+i,date,subject,title,detail,minutes}))}));
+const PREP_TASKS=PREP_WEEKS.flatMap(w=>w.tasks);
+
 const REV_TOTAL=GUIDES.reduce((n,g)=>n+g.topics.length,0);
 const KEY='mock-exam-tracker-2027-v1';
 const ALL_EXAMS=DAYS.flatMap(d=>d.events);
 let saved={};try{saved=JSON.parse(localStorage.getItem(KEY)||'{}')||{};}catch(_){saved={};}
-let state={week:WEEKS.some(w=>w.id===saved.week)?saved.week:'all',freeOnly:!!saved.freeOnly,selected:DAYS.some(d=>d.id===saved.selected)?saved.selected:'13',done:typeof saved.done==='object'&&saved.done?saved.done:{},view:['calendar','revision','study'].includes(saved.view)?saved.view:'calendar',subject:GUIDES.some(g=>g.id===saved.subject)?saved.subject:'cs',revision:typeof saved.revision==='object'&&saved.revision?saved.revision:{},notes:typeof saved.notes==='object'&&saved.notes?saved.notes:{},studyPlan:Array.isArray(saved.studyPlan)?saved.studyPlan:initialStudy(),studyDone:typeof saved.studyDone==='object'&&saved.studyDone?saved.studyDone:{},studyWeek:WEEKS.some(w=>w.id===saved.studyWeek)?saved.studyWeek:'all',studySelected:DAYS.some(d=>d.id===saved.studySelected)?saved.studySelected:'04',studyEditing:null};
+let state={week:WEEKS.some(w=>w.id===saved.week)?saved.week:'all',freeOnly:!!saved.freeOnly,selected:DAYS.some(d=>d.id===saved.selected)?saved.selected:'13',done:typeof saved.done==='object'&&saved.done?saved.done:{},view:['calendar','revision','study','roadmap'].includes(saved.view)?saved.view:'calendar',subject:GUIDES.some(g=>g.id===saved.subject)?saved.subject:'cs',revision:typeof saved.revision==='object'&&saved.revision?saved.revision:{},notes:typeof saved.notes==='object'&&saved.notes?saved.notes:{},studyPlan:Array.isArray(saved.studyPlan)?saved.studyPlan:initialStudy(),studyDone:typeof saved.studyDone==='object'&&saved.studyDone?saved.studyDone:{},studyWeek:WEEKS.some(w=>w.id===saved.studyWeek)?saved.studyWeek:'all',studySelected:DAYS.some(d=>d.id===saved.studySelected)?saved.studySelected:'04',studyEditing:null,prepDone:typeof saved.prepDone==='object'&&saved.prepDone?saved.prepDone:{},prepNotes:typeof saved.prepNotes==='object'&&saved.prepNotes?saved.prepNotes:{},prepWeek:PREP_WEEKS.some(w=>w.id===saved.prepWeek)?saved.prepWeek:'all',prepSubject:GUIDES.some(g=>g.id===saved.prepSubject)?saved.prepSubject:'all',prepPending:!!saved.prepPending};
 function store(){try{localStorage.setItem(KEY,JSON.stringify(state));}catch(_){/* may be blocked in some private/file browsers */}}
 function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
 function currentDays(){return DAYS.filter(d=>(state.week==='all'||d.week===state.week)&&(!state.freeOnly||!d.events.length));}
@@ -401,7 +549,7 @@ function render(){ensureSelected();const visible=currentDays();
  renderGuide();renderStudy();updateView();store();
 }
 function nextExamAfter(day){let offset=DAYS.findIndex(d=>d.id===day.id);for(let i=offset+1;i<DAYS.length;i++){if(DAYS[i].events.length)return {day:DAYS[i],event:DAYS[i].events[0]};}return null;}
-function updateView(){document.getElementById('calendarView').hidden=state.view!=='calendar';document.getElementById('revisionView').hidden=state.view!=='revision';document.getElementById('studyView').hidden=state.view!=='study';document.querySelectorAll('[data-view]').forEach(b=>b.setAttribute('aria-selected',String(b.dataset.view===state.view)));}
+function updateView(){document.getElementById('calendarView').hidden=state.view!=='calendar';document.getElementById('revisionView').hidden=state.view!=='revision';document.getElementById('studyView').hidden=state.view!=='study';document.getElementById('roadmapView').hidden=state.view!=='roadmap';document.querySelectorAll('[data-view]').forEach(b=>b.setAttribute('aria-selected',String(b.dataset.view===state.view)));}
 function renderGuide(){
  const guide=GUIDES.find(g=>g.id===state.subject)||GUIDES[0];
  const completed=GUIDES.reduce((sum,g)=>sum+g.topics.filter(t=>state.revision[g.id+':'+t[0]]).length,0);
@@ -498,6 +646,73 @@ document.getElementById('studyView').addEventListener('submit',e=>{if(e.target.i
 document.getElementById('studyResetBtn').addEventListener('click',()=>{if(confirm('Replace your edited study sessions with the suggested plan? This also resets completed study checkmarks. Exam and revision progress will remain unchanged.')){state.studyPlan=initialStudy();state.studyDone={};state.studyEditing=null;renderStudy();store();}});
 document.getElementById('studyExportBtn').addEventListener('click',exportStudy);
 
+
+function shortDateISO(date){return new Date(date+'T12:00:00Z').toLocaleDateString('en-GB',{day:'numeric',month:'short',timeZone:'UTC'});}
+function roadmapCountdown(){
+ const today=new Date();today.setHours(0,0,0,0);
+ const exam=new Date(2027,0,8);const remaining=Math.ceil((exam-today)/86400000);
+ if(remaining>0)return remaining+' day'+(remaining===1?'':'s')+' until your first mock';
+ if(remaining===0)return 'First mock today · 8 Jan';
+ return 'First mock · 8 Jan 2027';
+}
+function initPrepFilters(){
+ document.getElementById('prepWeekSelect').innerHTML='<option value="all">All 7 weeks</option>'+PREP_WEEKS.map((w,i)=>`<option value="${w.id}">Week ${i+1}: ${shortDateISO(w.start)}–${shortDateISO(w.end)}</option>`).join('');
+ document.getElementById('prepSubjectSelect').innerHTML='<option value="all">All subjects</option>'+GUIDES.map(g=>`<option value="${g.id}">${esc(g.name)}</option>`).join('');
+ document.getElementById('prepWeekSelect').value=state.prepWeek;
+ document.getElementById('prepSubjectSelect').value=state.prepSubject;
+ document.getElementById('prepPending').checked=state.prepPending;
+}
+function renderRoadmap(){
+ const done=PREP_TASKS.filter(t=>state.prepDone[t.id]).length;
+ const mins=PREP_TASKS.reduce((sum,t)=>sum+t.minutes,0);
+ const completeWeeks=PREP_WEEKS.filter(w=>w.tasks.every(t=>state.prepDone[t.id])).length;
+ document.getElementById('prepCompleted').textContent=done+' / '+PREP_TASKS.length;
+ document.getElementById('prepHours').textContent=(mins/60).toFixed(1)+'h';
+ document.getElementById('prepWeekProgress').textContent=completeWeeks+' / '+PREP_WEEKS.length;
+ document.getElementById('prepCountdown').textContent=roadmapCountdown();
+ document.getElementById('prepWeekSelect').value=state.prepWeek;
+ document.getElementById('prepSubjectSelect').value=state.prepSubject;
+ document.getElementById('prepPending').checked=state.prepPending;
+ const weeks=PREP_WEEKS.filter(w=>state.prepWeek==='all'||state.prepWeek===w.id);
+ const html=weeks.map((w,index)=>{
+   const all=w.tasks;
+   const visible=all.filter(t=>(state.prepSubject==='all'||t.subject===state.prepSubject)&&(!state.prepPending||!state.prepDone[t.id]));
+   if(!visible.length&&state.prepSubject!=='all')return '';
+   const checked=all.filter(t=>state.prepDone[t.id]).length;
+   const weekNo=PREP_WEEKS.findIndex(x=>x.id===w.id)+1;
+   const dayItems=Array.from({length:7},(_,i)=>{
+     const d=new Date(w.start+'T12:00:00Z');d.setUTCDate(d.getUTCDate()+i);
+     const iso=d.toISOString().slice(0,10);
+     if(iso>w.end)return '';
+     const activity=all.filter(t=>t.date===iso);
+     const day=d.toLocaleDateString('en-GB',{weekday:'short',timeZone:'UTC'});
+     return `<div class="prep-day ${!activity.length?'rest':''}" title="${activity.length?activity.length+' suggested session(s)':'Rest / catch-up'}"><strong>${day}</strong><span>${d.getUTCDate()}</span><small>${activity.length?activity.length+' task'+(activity.length===1?'':'s'):'REST'}</small></div>`;
+   }).join('');
+   const taskItems=visible.map(t=>{
+     const guide=GUIDES.find(g=>g.id===t.subject);
+     const selected=!!state.prepDone[t.id];
+     return `<label class="prep-task ${selected?'checked':''}"><input type="checkbox" data-prep-check="${t.id}" ${selected?'checked':''} aria-label="Complete ${esc(t.title)}"><span class="prep-task-content"><span class="prep-task-top"><span class="prep-subject" style="--color:${COLORS[guide.subject]}">${esc(guide.name)}</span><span>${shortDateISO(t.date)}</span><span>· ${t.minutes} min</span></span><strong class="prep-task-title">${esc(t.title)}</strong><span class="prep-task-desc">${esc(t.detail)}</span></span></label>`;
+   }).join('');
+   return `<section class="prep-week"><div class="prep-week-head"><div><div class="number">Week ${weekNo} of 7 · ${esc(w.stage)} · ${shortDateISO(w.start)}–${shortDateISO(w.end)}</div><h3>${esc(w.title)}</h3><p>${esc(w.goal)}</p></div><div class="prep-week-score"><strong>${checked} / ${all.length}</strong><small>Done this week</small><div class="small-progress"><div style="width:${checked/all.length*100}%"></div></div></div></div><div class="prep-daystrip">${dayItems}</div><div class="prep-tasks">${taskItems||'<div class="prep-empty">You have finished everything matching this filter for this week.</div>'}</div><div class="prep-foot"><div><label for="prepNote-${w.id}">Weekly notes / topics to revisit</label><textarea class="prep-note" id="prepNote-${w.id}" data-prep-note="${w.id}" maxlength="1800" placeholder="What went wrong? What will you try next week?">${esc(state.prepNotes[w.id]||'')}</textarea></div><button class="toolbtn prep-guide-link" type="button" data-prep-guide="${(state.prepSubject==='all'?all[0]?.subject:state.prepSubject)||'cs'}">Open revision guide</button></div></section>`;
+ }).join('');
+ document.getElementById('prepContainer').innerHTML=html||'<div class="prep-empty">No tasks match the selected subject and completion filter. Try another filter.</div>';
+}
+initPrepFilters();
+document.getElementById('prepWeekSelect').addEventListener('change',e=>{state.prepWeek=e.target.value;renderRoadmap();store();});
+document.getElementById('prepSubjectSelect').addEventListener('change',e=>{state.prepSubject=e.target.value;renderRoadmap();store();});
+document.getElementById('prepPending').addEventListener('change',e=>{state.prepPending=e.target.checked;renderRoadmap();store();});
+document.getElementById('roadmapView').addEventListener('change',e=>{
+ const checkbox=e.target.closest('[data-prep-check]');
+ if(checkbox){state.prepDone[checkbox.dataset.prepCheck]=checkbox.checked;renderRoadmap();store();}
+});
+document.getElementById('roadmapView').addEventListener('input',e=>{
+ if(e.target.matches('[data-prep-note]')){state.prepNotes[e.target.dataset.prepNote]=e.target.value;store();}
+});
+document.getElementById('roadmapView').addEventListener('click',e=>{
+ const guide=e.target.closest('[data-prep-guide]');
+ if(guide){state.subject=guide.dataset.prepGuide;state.view='revision';renderGuide();updateView();store();window.scrollTo({top:0,behavior:'smooth'});}
+});
+
 document.addEventListener('click',event=>{const view=event.target.closest('[data-view]');if(view){state.view=view.dataset.view;updateView();store();return;}const subject=event.target.closest('[data-subject]');if(subject){state.subject=subject.dataset.subject;renderGuide();store();return;}const jump=event.target.closest('[data-jump]');if(jump){state.view=jump.dataset.jump;updateView();store();window.scrollTo({top:0,behavior:'smooth'});return;}const week=event.target.closest('[data-week]');if(week){state.week=week.dataset.week;render();return;}const day=event.target.closest('[data-day]');if(day){state.selected=day.dataset.day;render();document.getElementById('details').scrollIntoView({behavior:'smooth',block:'nearest'});}});
 document.getElementById('freeOnly').addEventListener('change',e=>{state.freeOnly=e.target.checked;render();});
 document.getElementById('details').addEventListener('change',e=>{if(e.target.matches('[data-exam]')){state.done[e.target.dataset.exam]=e.target.checked;render();}});
@@ -510,6 +725,7 @@ function icsEscape(s){return s.replace(/\\/g,'\\\\').replace(/,/g,'\\,').replace
 function exportCalendar(){const stamp=new Date().toISOString().replace(/[-:]/g,'').replace(/\.\d{3}/,'');const lines=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Offline Mock Exam Planner//EN','CALSCALE:GREGORIAN','METHOD:PUBLISH','X-WR-CALNAME:Mock Exams January 2027'];for(const day of DAYS){for(const e of day.events){lines.push('BEGIN:VEVENT','UID:'+e.id+'-202701'+day.id+'@mock-exam-planner','DTSTAMP:'+stamp,'DTSTART;TZID=Asia/Kuala_Lumpur:202701'+day.id+'T'+timeICS(e.start),'DTEND;TZID=Asia/Kuala_Lumpur:202701'+day.id+'T'+timeICS(e.end),'SUMMARY:'+icsEscape(e.subject+' ('+e.paper+')'),'DESCRIPTION:'+icsEscape('Mock examination. Duration: '+e.duration+'. Confirm with your school.'),'END:VEVENT');}}lines.push('END:VCALENDAR');const content=lines.join('\r\n')+'\r\n';const blob=new Blob([content],{type:'text/calendar;charset=utf-8'});const url=URL.createObjectURL(blob);const link=document.createElement('a');link.href=url;link.download='mock-exams-january-2027.ics';document.body.appendChild(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);}
 document.getElementById('calendarBtn').addEventListener('click',exportCalendar);
 render();
+renderRoadmap();
 </script>
 </body>
 </html>
